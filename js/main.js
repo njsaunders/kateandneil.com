@@ -65,3 +65,4 @@
   const onHero = heroBox.top < headerHeight && heroBox.bottom > 0;
   document.body.classList.toggle('on-hero', onHero);
 })();
+
