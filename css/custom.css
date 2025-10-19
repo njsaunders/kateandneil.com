@@ -1,370 +1,324 @@
 /* ===============================
-   Custom CSS (trimmed + tidy)
+   Vars
    =============================== */
-
-/* Vars */
-:root {
-  --font-primary: "Frank Ruhl Libre", serif;
-  --font-secondary: "Frank Ruhl Libre", serif;
-  --colour-accent: #3B82F6;
-  --colour-forest: #2E3A2E;
-  --colour-cream: #F8F5F0;
-  --colour-dark-cream: #e2dfdc;
-  --curve-depth: clamp(48px, 10vw, 90px);    /* green section top curve depth */
-  --form-bg: #fff;
-  --form-line: rgba(0,0,0,.12);
+:root{
+  --font-primary:"Frank Ruhl Libre",serif;
+  --font-secondary:"Frank Ruhl Libre",serif;
+  --colour-accent:#3B82F6;
+  --colour-forest:#2E3A2E;
+  --colour-cream:#F8F5F0;
+  --colour-dark-cream:#e2dfdc;
+  --curve-depth:clamp(48px,10vw,90px);
+  --form-bg:#fff;
+  --form-line:rgba(0,0,0,.12);
+  --header-offset:80px;
+  --chev-h:clamp(54px,9vw,120px);
+  --rsvp-stroke:#222;
 }
 
-/* Base */
-html { background: var(--colour-forest); }
-body {
-  font: 16px/1.6 var(--font-secondary);
-  background: var(--colour-cream);
-  color: #222;
+[id]{scroll-margin-top:var(--header-offset);}
+.min-w-0{min-width:0;}
+
+/* ===============================
+   Base
+   =============================== */
+html{background:var(--colour-forest);}
+body{
+  font:16px/1.6 var(--font-secondary);
+  background:var(--colour-cream);
+  color:#222;
 }
-h1, h2, h3 { font-family: var(--font-primary); letter-spacing: -0.5px; }
-h1 { font-size: 2.5rem; }
-h2 { margin-bottom: .75rem; }
-strong { font-weight: 700; }
-a { transition: opacity .2s ease; color: #007740 !important; }
-a:hover { opacity: .85; }
-section { padding: 5rem 0; }
-
-@media (max-width: 640px) {
-  h1 { font-size: 2rem; }
-  section { padding: 3rem 0; }
+h1,h2,h3{font-family:var(--font-primary);letter-spacing:-.5px;}
+h1{font-size:3.5rem;}
+h2{margin-bottom:.75rem;}
+strong{font-weight:700;}
+a{transition:opacity .2s ease;color:#007740!important;}
+a:hover{opacity:.85;}
+section{padding:5rem 0;}
+@media (max-width:640px){
+  h1{font-size:2rem;}
+  section{padding:3rem 0;}
 }
- .main-heading {
-  font-size: 4rem;
- }
+.main-heading{font-size:4rem;}
+@media (max-width:767px){.main-heading{font-size:3rem;}}
+.mt-5{margin-top:50px;}
+.medium-grey-border{border:1px solid #bbb;}
 
- @media (max-width: 767px) {
-   .main-heading {
-    font-size: 3rem;
-   }
- }
-
- .mt-5 {
-  margin-top: 50px;
- }
-
- .medium-grey-border {
-    border: 1px solid #bbbbbb;
- }
-
-/* Header */
-.u-blur-6  { backdrop-filter: blur(6px);  -webkit-backdrop-filter: blur(6px); }
-.u-blur-10 { backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
-.u-blur-16 { backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
-
-.u-glass-dark {
-  background: rgba(0,0,0,.18);
-  border: 1px solid rgba(255,255,255,.18);
-  box-shadow: 0 10px 25px rgba(0,0,0,.15);
-  color: #fff;
+/* ===============================
+   Header
+   =============================== */
+.u-blur-6{backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);}
+.u-blur-10{backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);}
+.u-blur-16{backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);}
+.u-glass-dark{
+  background:rgba(255,255,255,.45);
+  color:#222;
+  border:1px solid rgba(0,0,0,.08);
+  box-shadow:0 10px 25px rgba(0,0,0,.10);
 }
-nav a { text-decoration: none !important; }
-.monogram img { height: 60px; margin-top: -6px; padding: 8px 0; }
-
-/* Hero */
-.hero-container { height: 100vh !important; }
-.hero-overlay { background: rgb(0 0 0 / 30%); }
-.hero-lock-up { padding-bottom: 50px; }
-.hero-rsvp-btn {
-    padding: 14px 20px !important;
-    max-width: 200px;
-    width: 100%;
-    border-color: #ffffff80;
-    color: #ffffff !important;
-    /*background-color: #f8f9fac4;*/
-    transition: all .2s ease;
-    font-size: 20px !important;
-    font-weight: 500;
+nav a{text-decoration:none!important;}
+.header .monogram img{height:60px;margin-top:-6px;padding:8px 0;}
+.header a{color:#222!important;}
+.header .monogram .logo--light{display:none!important;}
+.header .monogram .logo--dark{display:block!important;}
+.on-hero .header .u-glass-dark{
+  background:rgba(0,0,0,.18);
+  border-color:rgba(255,255,255,.18);
+  color:#fff;
 }
-.hero-rsvp-btn.btn:hover {
-  background-color: var(--bs-btn-hover-bg);
-  opacity: 0.85;
-  color: #222222 !important;
+.on-hero .header a{color:#fff!important;}
+.on-hero .header .monogram .logo--light{display:block!important;}
+.on-hero .header .monogram .logo--dark{display:none!important;}
+
+/* ===============================
+   Hero
+   =============================== */
+.hero-container{height:100vh!important;}
+.hero-overlay{background:rgb(0 0 0 / 60%);}
+.hero-lock-up{padding-bottom:50px;}
+.hero-rsvp-btn{
+  padding:14px 20px!important;
+  max-width:200px;width:100%;
+  border-color:#ffffff80;
+  color:#fff!important;
+  transition:all .2s ease;
+  font-size:20px!important;
+  font-weight:500;
 }
-
-/* Helpers */
-.text-left { text-align: left !important; }
-.mb-8 { margin-bottom: 4rem !important; }
-.p-tight { line-height:1rem; }
-
-/* Map */
-.mapouter { position: relative; width: 100%; height: 400px; border-radius: 20px; }
-.gmap_canvas { overflow: hidden; width: 100%; height: 400px; }
-.gmap_iframe { height: 400px !important; }
-
-/* ===== Green section with sharp cream curve at the very top ===== */
-.section--forest {
-  position: relative;
-  background: #e9f2e9;
-  color: #222;
-  padding-top: calc(var(--curve-depth) + 2.5rem); /* keeps heading inside green */
-  padding-bottom: 0;
-  overflow: hidden;
+.hero-rsvp-btn.btn:hover{
+  background-color:var(--bs-btn-hover-bg);
+  opacity:.85;
+  color:#222!important;
 }
-.section--forest .container { position: relative; z-index: 1; }
-.section-top-curve {
-  position: absolute; top: -1px; left: 0; right: 0; /* -1px hides seam */
-  width: 100%;
-  height: var(--curve-depth);
-  pointer-events: none;
-  z-index: 0;
-}
-
-a.standout-card, .standout-card {
-  border: 1px solid;
-  padding: 14px;
-  border-radius: 4px;
-  background: var(--colour-cream);
-  color: #222 !important;
-  text-decoration: none;
-  display: block;
-  border-right: 3px solid;
-  border-bottom: 3px solid;
-  transition: all .2s ease;
-}
-a.standout-card:hover {
-  background: #fff;
-}
-
-.standout-card a {
-  color: #222 !important;
-}
-
-.divider {
-  border-top: 1px solid #cdcdcd;
-  margin: 12px auto;
-  width: 100%;
-}
-
-/* ---------- Hero → next section chevron cut-out ---------- */
-:root { --chev-h: clamp(54px, 9vw, 120px); }
-
-/* Ensure the section is cream so the band blends in */
-#rsvp.chevron-top { background: var(--colour-cream); padding-top: 30px; padding-bottom: 0px;}
-
-/* Position the band so it overlaps the bottom of the hero */
-.chevron-band{
-  position: absolute;
-  left: 0; right: 0;
-  top: calc(-0.5 * var(--chev-h));   /* sits up over the hero */
-  height: var(--chev-h);
-  width: 100%;
-  display: block;
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* Optional: gentle depth under the chevron */
-.chevron-top::after{
-  content:"";
-  position:absolute; left:0; right:0;
-  top: calc(-0.5 * var(--chev-h));
-  height: var(--chev-h);
-  pointer-events:none;
-  z-index: 0;
-}
-
-
-
-/* ================================
-   RSVP form (final, consolidated)
-   ================================ */
-  #rsvpForm {
-    text-align: left;
-    border-radius: 12px;
-    padding: 0.5rem 0 0 0 !important;
-    margin-top: 30px;     
-    border: 1px solid #222222;
-    border-right-width: 3px;
-    border-bottom-width: 3px;
-  }
-
-@media (max-width: 575px) {
-  #rsvpForm {
-    margin-left: 25px; margin-right: 25px;
-    }
-  }
-
-  #rsvp h1 {
-    z-index: 2;
-    position: relative;
-  }
-  /* Fieldset card with fake hairline across the top */
-  #rsvpForm fieldset{
-    position: relative;
-    background: var(--form-bg, #fff);
-    border: 1px solid #bbbbbb;
-    border-radius: 8px;
-    padding: 28px 16px 18px;                 /* top space for the floating legend */
-    margin: 22px 22px 8px 22px;
-    overflow: visible;
-  }
-
-  /* Legend sits on the border and masks the line beneath it */
-  #rsvpForm fieldset > legend{
-    position: absolute;
-    top: 0;
-    left: 16px;                               /* ≈ corner radius */
-    transform: translateY(-50%);
-    margin: 0;
-    padding: 0 .5rem;                         /* solid tab behind text */
-    background: var(--form-bg, #fff);         /* MUST match fieldset/card bg */
-    line-height: 1.1;
-    font-weight: 500;                         /* your spec */
-    font-size: 16px;                          /* your spec */
-    display: inline-block;
-    white-space: nowrap;
-    z-index: 1;
-    width: inherit !important;
-  }
-
-  /* Make the whole RSVP form compact and 14px */
-  #rsvpForm { font-size: 14px; }
-  #rsvpForm .form-control,
-  #rsvpForm .form-check-label,
-  #rsvpForm .btn,
-  #rsvpForm .form-label { font-size: 14px; }
-
-  /* Floating labels: keep base at 14px; Bootstrap scales them when floating */
-  #rsvpForm .form-floating > label { font-size: 14px; }
-
-  /* Labels, controls, radios */
-  #rsvpForm .form-label { font-weight: 500; margin-bottom: .4rem; font-size: 14px;}
-  #rsvpForm .form-check { margin-right: 1rem; }
-  #rsvpForm .form-check-label { font-weight: 400; }
-  #rsvpForm .d-flex.flex-wrap.gap-3 { justify-content: flex-start; }
-
-  #rsvpForm .form-control {
-    /* border: 1px solid var(--form-line, rgba(0,0,0,.12)); */
-    border-radius: 8px;
-    padding: 0.9rem .75rem;
-    min-height: 30px;
-    padding-bottom: 0px;
-    box-shadow: none;
-    height: 45px;
-    background: #fefdfc;
-  }
-  #rsvpForm .form-control:focus{
-    border-color: #0a7cff;
-    box-shadow: 0 0 0 .2rem rgba(10,124,255,.15);
-  }
-
-  .form-floating>label {
-    padding: 0.7rem 0.75rem 0.75rem 0.75rem;
-  }
-
-  .att-row {
-    margin: 12px 0;
-  }
-
-/* Compact spacing inside floating groups */
-/*#rsvpForm .form-floating > .form-control { padding-top: .9rem; padding-bottom: .5rem; }*/
-#rsvpForm .row.g-2 { --bs-gutter-x: .5rem; }
-
-
-.bottom-section-form {
-  background-color: #e9f2e9;
-  border-top: 1px dotted #cdcdcd;
-  padding: 18px 8px;
-  border-radius: 0 0 8px 8px;
-}
-
-.rsvp-form-btn {
-  width: 100%;
-  padding: 12px;
-  font-size: 16px !important;
-  background: var(--colour-forest);
-}
-
-#addGuestBtn {
-  padding: 8px 32px 8px 28px;
-}
-.remove-guest-btn {
-  padding: 6px 20px 6px 16px;
-}
-
-.error-messages, .success-message {
-  margin: 0 15px;
-}
-
-.rsvp-btn{ position:relative; border-color:transparent !important; padding: 8px 16px; font-weight: 500; color: white !important;}
-.rsvp-btn:hover {
-  color: var(--colour-forest) !important;
-}
-
-/* animated outline */
-.rsvp-btn .rsvp-outline{
-  position:absolute; inset:0; width:100%; height:100%; pointer-events:none;
-}
+.rsvp-btn{position:relative;border-color:transparent!important;padding:8px 16px;font-weight:500;color:#fff!important;}
+.rsvp-btn:hover{color:var(--colour-forest)!important;}
+.rsvp-btn .rsvp-outline{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
 .rsvp-btn .rsvp-outline rect{
   fill:none;
-  stroke:rgba(255,255,255,.95);
+  stroke:var(--rsvp-stroke);
   stroke-width:1.5;
-  /* start with no visible dash */
-  stroke-dasharray: 0 100;
-  stroke-dashoffset: 0;
-  animation: rsvp-draw-undraw 3.6s ease-in-out infinite;
+  stroke-dasharray:0 100;
+  stroke-dashoffset:0;
+  animation:rsvp-draw-undraw 3.6s ease-in-out infinite;
 }
-
-/* draw → hold → undraw → hold */
 @keyframes rsvp-draw-undraw{
-  0%   { stroke-dasharray: 0 100;   stroke-dashoffset:   0;   opacity:.9; }  /* hidden */
-  58%  { stroke-dasharray: 100 0;   stroke-dashoffset:   0;   opacity:1;  }  /* fully drawn */
-  78%  { stroke-dasharray: 100 0;   stroke-dashoffset:   0;   opacity:1;  }  /* hold */
-  100% { stroke-dasharray: 0 100;   stroke-dashoffset: -100;  opacity:.9; }  /* undrawn back to start */
+  0%{stroke-dasharray:0 100;stroke-dashoffset:0;opacity:.9;}
+  58%{stroke-dasharray:100 0;stroke-dashoffset:0;opacity:1;}
+  78%{stroke-dasharray:100 0;stroke-dashoffset:0;opacity:1;}
+  100%{stroke-dasharray:0 100;stroke-dashoffset:-100;opacity:.9;}
+}
+@media (prefers-reduced-motion:reduce){.rsvp-btn .rsvp-outline rect{animation:none;}}
+.on-hero{--rsvp-stroke:rgba(255,255,255,.95);}
+
+/* ===============================
+   Helpers
+   =============================== */
+.text-left{text-align:left!important;}
+.mb-8{margin-bottom:4rem!important;}
+.p-tight{line-height:1rem;}
+.object-fit-cover{object-fit:cover;object-position:bottom;}
+
+/* ===============================
+   Section: Forest + top curve
+   =============================== */
+.section--forest{
+  position:relative;
+  background:#e9f2e9;
+  color:#222;
+  padding-top:calc(var(--curve-depth) + 2.5rem);
+  padding-bottom:0;
+  overflow:visible;
+}
+.section--forest .container{position:relative;z-index:1;}
+.section-top-curve{
+  position:absolute;top:-1px;left:0;right:0;
+  width:100%;height:var(--curve-depth);
+  pointer-events:none;z-index:0;
 }
 
-/* reduced motion */
-@media (prefers-reduced-motion: reduce){
-  .rsvp-btn .rsvp-outline rect{ animation:none; }
+/* ===============================
+   Cards / Dividers
+   =============================== */
+a.standout-card,.standout-card{
+  border:1px solid;
+  padding:14px;
+  border-radius:4px;
+  background:#fefdfc;
+  color:#222!important;
+  text-decoration:none;
+  display:block;
+  border-right:3px solid;
+  border-bottom:3px solid;
+  transition:all .2s ease;
+}
+a.standout-card:hover{background:#fff;}
+.standout-card a{color:#222!important;text-decoration:underline!important;}
+.divider{border-top:1px solid #cdcdcd;margin:12px auto;width:100%;}
+
+/* ===============================
+   Hero → Next Section Chevron
+   =============================== */
+#rsvp.chevron-top{background:var(--colour-cream);padding-top:30px;padding-bottom:0;}
+.chevron-band{
+  position:absolute;left:0;right:0;
+  top:calc(-0.5 * var(--chev-h));
+  height:var(--chev-h);width:100%;
+  display:block;pointer-events:none;z-index:1;
+}
+.chevron-top::after{
+  content:"";
+  position:absolute;left:0;right:0;
+  top:calc(-0.5 * var(--chev-h));
+  height:var(--chev-h);
+  pointer-events:none;z-index:0;
 }
 
-/*
-#getting-there {
-  background: url('../images/invite-bg.jpg') no-repeat top center;
-}*/
-
-.section-anchor-standard {
-  padding-bottom: 70px;
-  background: var(--colour-dark-cream);
+/* ===============================
+   RSVP Form
+   =============================== */
+#rsvpForm{
+  text-align:left;
+  border-radius:12px;
+  padding:.5rem 0 0 0!important;
+  margin-top:30px;
+  border:1px solid #222;
+  border-right-width:3px;
+  border-bottom-width:3px;
+  font-size:16px;line-height:1.3rem!important;
 }
-.section-anchor-getting-there {
-  padding-bottom: 40px;
+@media (max-width:575px){#rsvpForm{margin-left:25px;margin-right:25px;}}
+#rsvp h1{z-index:2;position:relative;}
+#rsvpForm fieldset{
+  position:relative;
+  background:var(--form-bg,#fff);
+  border:1px solid #bbb;
+  border-radius:8px;
+  padding:28px 16px 18px;
+  margin:22px;
+  overflow:visible;
+}
+#rsvpForm fieldset>legend{
+  position:absolute;top:0;left:16px;
+  transform:translateY(-50%);
+  margin:0;padding:0 .5rem;
+  background:var(--form-bg,#fff);
+  line-height:1.1;font-weight:500;font-size:16px;
+  display:inline-block;white-space:nowrap;z-index:1;width:inherit!important;
+}
+#rsvpForm .form-control,
+#rsvpForm .form-check-label,
+#rsvpForm .btn,
+#rsvpForm .form-label{font-size:16px;}
+#rsvpForm .form-floating>label{font-size:16px;}
+#rsvpForm .form-label{font-weight:500;margin-bottom:.4rem;font-size:14px;}
+#rsvpForm .form-check{margin-right:1rem;}
+#rsvpForm .form-check-label{font-weight:400;}
+#rsvpForm .d-flex.flex-wrap.gap-3{justify-content:flex-start;}
+#rsvpForm .form-control{
+  border-radius:8px;
+  padding:.9rem .75rem;
+  min-height:30px;
+  padding-bottom:0;
+  box-shadow:none;
+  height:45px;
+  background:#fefdfc;
+}
+#rsvpForm .form-control:focus{border-color:#0a7cff;box-shadow:0 0 0 .2rem rgba(10,124,255,.15);}
+.form-floating>label{padding:.7rem .75rem .75rem;}
+.att-row{margin:12px 0;}
+#rsvpForm .row.g-2{--bs-gutter-x:.5rem;}
+.bottom-section-form{
+  background-color:#e9f2e9;
+  border-top:1px dotted #cdcdcd;
+  padding:18px 8px;
+  border-radius:0 0 8px 8px;
+}
+.rsvp-form-btn{width:100%;padding:12px;font-size:18px!important;background:var(--colour-forest);}
+#addGuestBtn{padding:8px 32px 8px 28px;}
+.remove-guest-btn{padding:6px 20px 6px 16px;}
+.error-messages,.success-message{margin:0 15px;}
+#formError{margin-bottom:5px!important;}
+#rsvpForm .is-invalid{border-color:#dc3545!important;box-shadow:0 0 0 .2rem rgba(220,53,69,.15)!important;}
+#rsvpForm .att-row.invalid{border:1px solid #dc3545;border-radius:12px;padding:.5rem .75rem;background:rgba(220,53,69,.03);}
+.form-check-input:checked{background-color:var(--colour-forest);border-color:var(--colour-forest);}
+
+/* ===============================
+   Anchors / Section Anchors
+   =============================== */
+.section-anchor-standard{padding-bottom:70px;background:var(--colour-dark-cream);}
+.section-anchor-getting-there{padding-bottom:40px;}
+
+/* ===============================
+   Map + Equal Split
+   =============================== */
+.equal-split{min-height:0;}
+.split-50{flex:0 0 50%;min-height:0;}
+.map-wrap{height:100%;}
+.map-fill{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;}
+@media (max-width:767.98px){
+  .equal-split{display:block;}
+  .equal-split .split-50{flex:none;}
+  .map-wrap{height:auto;}
+  .map-fill{position:static;height:40vh;width:100%;}
 }
 
+/* ===============================
+   Offcanvas (Mobile Menu)
+   =============================== */
+.offcanvas-right-full.offcanvas-end{
+  --bs-offcanvas-width:100vw;
+  width:var(--bs-offcanvas-width);
+  background:var(--colour-forest);
+  color:var(--colour-cream);
+  min-height:100vh;
+}
+@supports (width:100dvw){.offcanvas-right-full.offcanvas-end{--bs-offcanvas-width:100dvw;}}
+.offcanvas-right-full .offcanvas-body{background:var(--colour-forest);}
+.offcanvas-right-full .menu-link{
+  color:var(--colour-cream)!important;
+  text-decoration:none;
+  padding:.25rem .75rem;
+  transition:opacity .2s ease;
+}
+.offcanvas-right-full .menu-link:hover,
+.offcanvas-right-full .menu-link:focus{opacity:.85;}
+.offcanvas-right-full .rsvp-btn{border-width:2px;}
+.btn-close-white{filter:invert(1) grayscale(100%) brightness(200%);}
+.offcanvas-backdrop.show{opacity:0;}
 
-/* make the two blocks share the column height */
-.equal-split { min-height: 0; }        /* allow flex children to size correctly */
-.split-50    { flex: 0 0 50%; min-height: 0; }
-
-/* iframe fills its half completely */
-.map-wrap  { height: 100%; }
-.map-fill  { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
-
-/* helper if your BS version lacks this utility */
-.object-fit-cover { object-fit: cover; object-position: bottom; }
-
-/* mobile: disable the 50/50 split and give the map a sensible height */
-@media (max-width: 767.98px){
-  .equal-split{ display:block; }           /* stop being a flex column */
-  .equal-split .split-50{ flex:none; }     /* ignore the 50% basis */
-  .map-wrap{ height:auto; }                /* let content define height */
-  .map-fill{ position:static; height:40vh; width:100%; } /* tall enough map */
+/* ===============================
+   Accordion (FAQs)
+   =============================== */
+.accordion{background:transparent!important;}
+.accordion-item{background:transparent!important;}
+.accordion-button{background:transparent!important;font-size:18px;}
+.accordion-button:not(.collapsed){color:#222!important;font-weight:700;}
+.accordion-button:focus,.accordion-button:not(.collapsed){box-shadow:none!important;}
+.accordion-body{
+  text-align:left;
+  background:#fefdfc;
+  border-radius:8px;
+  border:1px solid #222;
+  border-right-width:3px;
+  border-bottom-width:3px;
+  margin:5px 15px 20px;
 }
 
-
-
-/* Footer */
-footer { background: var(--colour-forest); color: var(--colour-cream) !important; margin: 40px auto; }
-footer img {
-  max-width: 200px;
+/* ===============================
+   Headings Images
+   =============================== */
+.headings-img{
+  max-width:120px;width:100%;
+  margin:0 auto;position:relative;z-index:1;display:block;
 }
-footer a {
-  color: var(--colour-cream) !important;
-  text-decoration: none;
+
+/* ===============================
+   Footer
+   =============================== */
+footer{color:var(--colour-forest)!important;position:relative;margin:0;}
+footer img{width:100%;z-index:0;}
+.footer-text{
+  z-index:1;position:absolute;bottom:5%;left:0;
+  text-align:center;margin:0 auto;width:100%;
 }
+footer a{color:var(--colour-forest)!important;text-decoration:none;}

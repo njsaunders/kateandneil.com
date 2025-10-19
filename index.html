@@ -37,15 +37,19 @@
         <div class="mt-3 mb-3 d-flex align-items-center justify-content-between rounded-4 px-3 py-2 u-glass-dark u-blur-10">
 
           <!-- Logo -->
-          <a href="#home" class="monogram d-inline-flex align-items-center gap-2 text-decoration-none text-white">
-            <img src="images/monogram-monogram-light.png" alt="Kate & Neil" height="32">
+          <a href="#home" class="monogram d-inline-flex align-items-center gap-2 text-decoration-none">
+            <!-- light version (for hero) -->
+            <img src="images/monogram-monogram-light.png" alt="Kate & Neil" class="logo--light" height="32">
+            <!-- dark version (for non-hero) -->
+            <img src="images/monogram-monogram-dark.png"  alt="" class="logo--dark"  height="32" aria-hidden="true">
             <span class="visually-hidden">Home</span>
           </a>
+
 
           <!-- NAV + RSVP (one line from md+) -->
           <div class="nav-links d-none d-md-flex align-items-center gap-3 flex-nowrap">
             <ul class="d-flex list-unstyled m-0 gap-4 text-white-50">
-              <li><a href="#" class="link-light">Home</a></li>
+              <li><a href="#home" class="link-light">Home</a></li>
               <li><a href="#getting-there" class="link-light">Getting there</a></li>
               <li><a href="#accommodation" class="link-light">Accommodation</a></li>
               <li><a href="#faqs" class="link-light">FAQs</a></li>
@@ -61,14 +65,43 @@
           </div>
 
           <!-- Mobile menu button -->
-          <button class="d-md-none btn btn-link text-white p-2" aria-label="Open menu">
+          <button
+            class="d-md-none btn btn-link text-white p-2"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#mobileMenu"
+            aria-controls="mobileMenu"
+            aria-expanded="false"
+            aria-label="Open menu">
             <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M4 6h16M4 12h16M4 18h16"/>
             </svg>
           </button>
 
+
         </div>
       </nav>
+
+
+      <!-- Mobile menu (full-screen from right) -->
+      <div class="offcanvas offcanvas-end offcanvas-right-full border-0"
+           tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
+
+        <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-4"
+                data-bs-dismiss="offcanvas" aria-label="Close"></button>
+
+        <div class="offcanvas-body p-0 d-flex flex-column">
+          <div class="flex-grow-1 d-flex flex-column align-items-center justify-content-center text-center gap-2">
+            <a class="menu-link fs-2" href="#home" data-bs-dismiss="offcanvas">Home</a>
+            <a class="menu-link fs-2" href="#getting-there" data-bs-dismiss="offcanvas">Getting there</a>
+            <a class="menu-link fs-2" href="#accommodation" data-bs-dismiss="offcanvas">Accommodation</a>
+            <a class="menu-link fs-2" href="#faqs" data-bs-dismiss="offcanvas">FAQs</a>
+            <a href="#rsvp" class="hero-rsvp-btn btn btn-outline-light mt-4 px-4 py-2" data-bs-dismiss="offcanvas">RSVP</a>
+          </div>
+        </div>
+      </div>
+
+
+
     </header>
 
 
@@ -121,7 +154,7 @@
       <!--------------------------------->
       <!------ RSVP SECTION START ------->
       <!--------------------------------->
-      <section class="position-relative text-center chevron-top pb-0">
+      <section class="position-relative text-center chevron-top pb-0 pt-0">
 
         <svg class="chevron-band" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
           <!-- Top edge dips down to y=30 (chevron pointing DOWN) -->
@@ -130,8 +163,9 @@
 
         <div class="container">
           <div class="row justify-content-center">
-            <div class="col-12 col-md-10 col-lg-8 col-xl-6">
-              
+            <div class="col-12 col-md-10 col-lg-8 col-xl-6 gx-0">
+            
+            <img src="images/mustelids.png" class="headings-img">
             <h1>RSVP</h1>
             <p class="text-center text-muted">Please RSVP before 11 January 2026.</p>
             
@@ -220,12 +254,12 @@
 
               <!-- Add/Remove controls -->
               <div class="container mt-3">
-                <div class="row mb-4 align-items-center text-center">
+                <div class="row mb-2 align-items-center text-center">
                   <div class="col-12">
                     <button type="button" id="addGuestBtn" class="btn btn-outline-dark">+ &nbsp; Add guest</button>
                   </div>
-                  <div class="col-12 mt-2">
-                    <small class="text-muted align-self-center">Add additional named guests on your invite</small>
+                  <div class="col-12 mt-3">
+                    <p class="text-muted align-self-center">Add additional named guests on your invite</p>
                   </div>
                 </div>
               </div>
@@ -236,7 +270,7 @@
               <!-- Dancefloor request  -->
               <div class="row m-2">
                 <div class="col-md-12">
-                  <p class="align-self-center mb-2 p-tight">If you play this song, I/we hereby promise to report immediately to the dancefloor:</p>
+                  <p class="align-self-center mb-2">If you play this song, I/we hereby promise to report immediately to the dancefloor:</p>
                   <div class="form-floating">
                     <input id="message" name="musicrequest" type="text" class="form-control" placeholder="Your music request">
                     <label for="message">Nominated banger(s)</label>
@@ -245,7 +279,7 @@
               </div>
 
               <!-- Contact  -->
-              <div class="row m-2">
+              <div class="row m-2 mb-3">
                 <div class="col-md-12">
                   <div class="form-floating">
                     <input id="email" name="email" type="email" class="form-control" placeholder="Email" required>
@@ -342,9 +376,7 @@
       <!------------------------------------------>
       <!------ GETTING THERE SECTION START ------->
       <!------------------------------------------>
-      <div id="getting-there" class="section-anchor-getting-there"></div>
-
-      <section class="section--forest">
+      <section id="getting-there" class="section--forest">
 
         <!-- cream curve that visually belongs to the section above -->
         <svg class="section-top-curve" viewBox="0 0 100 20" preserveAspectRatio="none"
@@ -352,24 +384,26 @@
           <path d="M0,0 H100 V20 C75,8 25,8 0,20 Z" fill="var(--colour-cream)"/>
         </svg>
 
-        <div class="container-fluid text-center text-md-start">
-          <h1 class="font-serif text-center mb-4">Getting there</h1>
+        <img src="images/car.png" class="headings-img">
+
+        <div class="container-fluid text-md-start pb-5">
+          <h1 class="font-serif text-center mb-4 text-center">Getting there</h1>
 
           <!-- Venue -->
-          <div class="row gx-5 justify-content-md-center m-4">
+          <div class="row justify-content-md-center m-md-4 m-2 mb-4">
             <div class="col-12 col-md-8 mb-0 mb-md-4 text-center mx-md-auto">
               <a href="https://maps.app.goo.gl/4AW5ocXJGsPHEgxp8"
                  class="standout-card shadow-sm d-inline-block"
                  target="_blank" rel="noopener">
                 <strong>Venue address:</strong><br>
-                Minstead Lodge, Seaman’s Lane, Minstead, SO43&nbsp;7FT
+                Minstead Lodge, Seaman’s Lane, Minstead, SO43&nbsp;7FT&nbsp;&nbsp;&nbsp;<strong>↗︎</strong>
               </a>
             </div>
           </div>
           <!-- /Venue -->
 
           <!-- Content row (equal-height columns) -->
-          <div class="row gx-5 m-4 align-items-stretch">
+          <div class="row gx-md-5 m-2 m-md-4 align-items-stretch">
 
             <!-- LEFT: map (top) + image (bottom) 50/50 -->
             <div class="col-md-6 d-flex flex-column equal-split">
@@ -386,7 +420,7 @@
               </div>
 
               <!-- Image shown on md and above -->
-              <div class="split-50 d-none d-md-block">
+              <div class="split-50 d-none d-md-block mb-5">
                 <img src="images/new-forest-ponies.jpg" alt="New Forest ponies"
                      class="w-100 h-100 object-fit-cover rounded-2 shadow-sm medium-grey-border">
               </div>
@@ -394,7 +428,7 @@
             <!-- /LEFT -->
 
             <!-- RIGHT: text -->
-            <div class="col-md-6 d-flex">
+            <div class="col-md-6 d-flex mt-4 mt-md-0">
               <div class="w-100">
                 <p><strong>By train + taxi</strong><br>
                   If you’re coming from London, Devon, Liverpool or elsewhere in the UK, the nearest train station is
@@ -411,7 +445,7 @@
                 </p>
 
                 <p>
-                  One thing to watch for: <strong>free-roaming ponies</strong>, deer, and other forest animals are common here — slow down, especially on forest roads.
+                  One thing to watch for: <strong>free-roaming ponies</strong>, deer, and other forest animals are common here - slow down, especially on forest roads.
                 </p>
 
                 <p><strong>Coach &amp; taxi service on the day</strong><br>
@@ -420,7 +454,7 @@
                 </p>
 
                 <p>
-                  If you’d rather not use the coach service, local taxis are an option — but we recommend booking in advance if you can.
+                  If you’d rather not use the coach service, local taxis are an option, but we recommend booking in advance if you can.
                 </p>
               </div>
             </div>
@@ -449,10 +483,12 @@
       <!------------------------------------------>
       <!------ ACCOMMODATION SECTION START ------->
       <!------------------------------------------>
-      <div id="accommodation" class="section-anchor-standard"></div>
+      <section id="accommodation" class="position-relative text-center py-5 bg-body-tertiary">
 
-      <section class="position-relative text-center py-5 bg-body-tertiary">
         <div class="container">
+
+          <img src="images/ponies.png" class="headings-img">
+
           <h1>Accommodation</h1>
           
           <div class="container text-left mt-5">
@@ -467,71 +503,45 @@
 
                 <p>Local taxi services are available too, though it’s worth booking these in advance.</p>
 
-                <p>There are plenty of lovely places to stay in and around Lyndhurst, so if none of these feel quite right, feel free to choose somewhere that suits you best.</p>
+                <p>There are plenty of lovely places to stay in and around the New Forest, so if none of these feel quite right, feel free to choose somewhere that suits you best.</p>
+
+               <div class="standout-card mt-4">
+                <!-- item -->
+                <div class="d-flex align-items-center">
+                  <a href="https://www.crownhotel-lyndhurst.co.uk/" target="_blank"
+                     class="flex-grow-1 min-w-0 text-decoration-none">
+                    <span class="text-truncate d-block">Crown Hotel</span>
+                  </a>
+                  <span class="text-nowrap ms-2">from £100 p/n</span>
+                </div>
+                <div class="divider"></div>
+
+                <!-- item -->
+                <div class="d-flex align-items-center">
+                  <a href="#" target="_blank" class="flex-grow-1 min-w-0 text-decoration-none">
+                    <span class="text-truncate d-block">Hotel option 1 with a slightly longer name</span>
+                  </a>
+                  <span class="text-nowrap ms-2">from £80 p/n</span>
+                </div>
+                <div class="divider"></div>
+
+                <!-- item -->
+                <div class="d-flex align-items-center">
+                  <a href="#" target="_blank" class="flex-grow-1 min-w-0 text-decoration-none">
+                    <span class="text-truncate d-block">Hotel option 2</span>
+                  </a>
+                  <span class="text-nowrap ms-2">from £140 p/n</span>
+                </div>
+              </div>
+
+
+
               </div>
 
               <div class="col-md">
 
-                <!-- Carousel start -->
-                <div id="carouselExampleIndicators" class="carousel slide carousel-fade mb-4">
-                  <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                  </div>
-                  <div class="carousel-inner">
-                    <div class="carousel-item active">
-                      <img src="images/crown-hotel.jpg" alt="Crown Hotel"
+                <img src="images/crown-hotel.jpg" alt="Crown Hotel"
                      class="w-100 h-100 object-fit-cover rounded-2 shadow-sm medium-grey-border">
-                    </div>
-                    <div class="carousel-item">
-                      <img src="images/placeholder.jpg" class="d-block w-100" alt="..."
-                     class="w-100 h-100 object-fit-cover rounded-2 shadow-sm medium-grey-border">
-                    </div>
-                    <div class="carousel-item">
-                      <img src="images/placeholder.jpg" class="d-block w-100" alt="..."
-                     class="w-100 h-100 object-fit-cover rounded-2 shadow-sm medium-grey-border">
-                    </div>
-                  </div>
-                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                  </button>
-                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                  </button>
-                </div>
-                <!-- Carousel end -->
-
-                <div class="standout-card">
-                  <div class="row">
-                    <div class="col-8">
-                      <a href="https://www.crownhotel-lyndhurst.co.uk/" target="blank">Crown Hotel</a>
-                    </div>
-                    <div class="col-4">
-                      from £100 p/n
-                    </div>
-                  </div>
-                  <div class="divider"></div>
-                  <div class="row">
-                    <div class="col-8">
-                      <a href="#" target="blank">Hotel option 1</a>
-                    </div>
-                    <div class="col-4">
-                      from £80 p/n
-                    </div>
-                  </div>
-                  <div class="divider"></div>
-                  <div class="row">
-                    <div class="col-8">
-                      <a href="#" target="blank">Hotel option 2</a>
-                    </div>
-                    <div class="col-4">
-                      from £140 p/n
-                    </div>
-                  </div>
-                </div>
 
               </div>
             </div>
@@ -549,9 +559,7 @@
       <!--------------------------------->
       <!------ FAQS SECTION START ------->
       <!--------------------------------->
-      <div id="faqs" class="section-anchor-standard"></div>
-
-      <section class="position-relative text-center chevron-top">
+      <section id="faqs" class="position-relative text-center chevron-top">
 
         <svg class="chevron-band" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
           <!-- Top edge dips down to y=30 (chevron pointing DOWN) -->
@@ -561,13 +569,217 @@
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-12 col-sm-10 col-md-8">
+
+              <img src="images/drink.png" class="headings-img">
               
             <h1 class="mb-5">FAQs</h1>
-            <p class="text-center text-muted">Lorem ipsum Quae fuerit causa, mox videro; interea hoc epicurus in voluptate velit esse, quid bonum sit sentiri haec ratio late patet in oculis quidem exercitus quid ex ea commodi consequatur? quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut ipsi.</p>
+            <div class="accordion accordion-flush kn-accordion" id="faqAccordion">
 
-            <p>On the day?</p>
-            <p>Food &amp; Drink?</p>
-            
+              <!-- Q1 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="faq1-h">
+                  <button class="accordion-button collapsed" type="button"
+                          data-bs-toggle="collapse" data-bs-target="#faq1"
+                          aria-expanded="false" aria-controls="faq1">
+                    What time is the ceremony?
+                  </button>
+                </h2>
+                <div id="faq1" class="accordion-collapse collapse"
+                     aria-labelledby="faq1-h" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    The ceremony will begin at <strong>2:00 PM</strong>. Please arrive by <strong>1:00 PM</strong> for a welcome drink and canapés.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Q2 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="faq2-h">
+                  <button class="accordion-button collapsed" type="button"
+                          data-bs-toggle="collapse" data-bs-target="#faq2"
+                          aria-expanded="false" aria-controls="faq2">
+                    Where is the ceremony taking place?
+                  </button>
+                </h2>
+                <div id="faq2" class="accordion-collapse collapse"
+                     aria-labelledby="faq2-h" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Weather permitting, we’ll be outdoors in the gardens at Minstead Lodge. If not, we have a beautiful indoor setting ready.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Q3 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="faq3-h">
+                  <button class="accordion-button collapsed" type="button"
+                          data-bs-toggle="collapse" data-bs-target="#faq3"
+                          aria-expanded="false" aria-controls="faq3">
+                    What's the dress code?
+                  </button>
+                </h2>
+                <div id="faq3" class="accordion-collapse collapse"
+                     aria-labelledby="faq3-h" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    The dress code is formal cocktail. Dresses, jumpsuits, or suits with jackets are perfect. We want our guests to feel relaxed, so please wear whatever you feel comfortable in.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Q4 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="faq4-h">
+                  <button class="accordion-button collapsed" type="button"
+                          data-bs-toggle="collapse" data-bs-target="#faq4"
+                          aria-expanded="false" aria-controls="faq4">
+                    Is there parking at the venue?
+                  </button>
+                </h2>
+                <div id="faq4" class="accordion-collapse collapse"
+                     aria-labelledby="faq4-h" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Yes, there is ample parking at Minstead Lodge. We do, however, recommend the <strong>guest coach from Lyndhurst at 12:30 PM</strong> for ease.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Q5 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="faq5-h">
+                  <button class="accordion-button collapsed" type="button"
+                          data-bs-toggle="collapse" data-bs-target="#faq5"
+                          aria-expanded="false" aria-controls="faq5">
+                    Are there vegetarian, vegan, or gluten-free options?
+                  </button>
+                </h2>
+                <div id="faq5" class="accordion-collapse collapse"
+                     aria-labelledby="faq5-h" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Absolutely. Please share any dietary requirements in your RSVP and our caterers will look after you.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Q6 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="faq6-h">
+                  <button class="accordion-button collapsed" type="button"
+                          data-bs-toggle="collapse" data-bs-target="#faq6"
+                          aria-expanded="false" aria-controls="faq6">
+                    Will there be an open bar?
+                  </button>
+                </h2>
+                <div id="faq6" class="accordion-collapse collapse"
+                     aria-labelledby="faq6-h" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Do you even know Neil if you're asking this question? 😄 Yes - alongside bubbles, beer, wine and spirits, we’ll have a selection of cocktails and special touches (including our usher Dave’s homemade wedding brew) for our guests. Soft drinks will also be available throughout.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Q7 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="faq7-h">
+                  <button class="accordion-button collapsed" type="button"
+                          data-bs-toggle="collapse" data-bs-target="#faq7"
+                          aria-expanded="false" aria-controls="faq7">
+                    Do you have a gift registry?
+                  </button>
+                </h2>
+                <div id="faq7" class="accordion-collapse collapse"
+                     aria-labelledby="faq7-h" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    We don’t have a registry, celebrating our wedding with you is all we need! If you’d like to contribute towards our honeymoon though, we’d be truly grateful. Details will follow closer to the day.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Q8 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="faq8-h">
+                  <button class="accordion-button collapsed" type="button"
+                          data-bs-toggle="collapse" data-bs-target="#faq8"
+                          aria-expanded="false" aria-controls="faq8">
+                    Are children invited?
+                  </button>
+                </h2>
+                <div id="faq8" class="accordion-collapse collapse"
+                     aria-labelledby="faq8-h" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Owing to venue capacity, this will be an <strong>adults-only celebration</strong>. We hope it’s a welcome evening off for those with little ones.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Q9 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="faq9-h">
+                  <button class="accordion-button collapsed" type="button"
+                          data-bs-toggle="collapse" data-bs-target="#faq9"
+                          aria-expanded="false" aria-controls="faq9">
+                    Can I bring a plus one?
+                  </button>
+                </h2>
+                <div id="faq9" class="accordion-collapse collapse"
+                     aria-labelledby="faq9-h" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Invites are limited to the names listed on your invite due to capacity restrictions. Thank you for understanding.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Q10 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="faq10-h">
+                  <button class="accordion-button collapsed" type="button"
+                          data-bs-toggle="collapse" data-bs-target="#faq10"
+                          aria-expanded="false" aria-controls="faq10">
+                    Can I change my RSVP?
+                  </button>
+                </h2>
+                <div id="faq10" class="accordion-collapse collapse"
+                     aria-labelledby="faq10-h" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Yes, you can resubmit your RSVP on the website or contact us directly. Please note we need to confirm final numbers by <strong>11 January 2026</strong>.<br><br>
+                    Kate – <a href="mailto:brookhart.kate@gmail.com">brookhart.kate@gmail.com</a><br>
+                    Neil – <a href="mailto:n.j.saunders@gmail.com">n.j.saunders@gmail.com</a> | <a href="tel:+447984717153">07984 717 153</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Q11 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="faq11-h">
+                  <button class="accordion-button collapsed" type="button"
+                          data-bs-toggle="collapse" data-bs-target="#faq11"
+                          aria-expanded="false" aria-controls="faq11">
+                    Can I take photos during the ceremony?
+                  </button>
+                </h2>
+                <div id="faq11" class="accordion-collapse collapse"
+                     aria-labelledby="faq11-h" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Yes, we’ll have an official photographer and an unofficial roaming videographer (shout out to Chris Prowse), and we’d love you to capture your own moments too. Please tag any photos with <strong>#kateandneil2026</strong> on Instagram or share them with us on Whatsapp.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Q12 -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="faq12-h">
+                  <button class="accordion-button collapsed" type="button"
+                          data-bs-toggle="collapse" data-bs-target="#faq12"
+                          aria-expanded="false" aria-controls="faq12">
+                    What’s the story behind the venue?
+                  </button>
+                </h2>
+                <div id="faq12" class="accordion-collapse collapse"
+                     aria-labelledby="faq12-h" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    We’re celebrating at <strong>Minstead Lodge</strong>, part of <strong>Minstead Trust</strong>, a social enterprise supporting over 320 people with learning disabilities across Hampshire. Set in the New Forest and connected to Kate’s family roots, it’s a very special place for our day.
+                  </div>
+                </div>
+              </div>
 
 
             </div>
@@ -591,9 +803,11 @@
     <!------- FOOTER START -------->
     <!----------------------------->
 
-    <footer class="text-center py-4 small">
-      <img src="images/mustelids.png">
-      <p class=""><a href="index.html">11 July 2026 &nbsp; • &nbsp; Kate & Neil</a></p>
+    <footer class="text-center">
+      <div class="container-fluid">
+        <a href="index.html" class="footer-text">11 July 2026 &nbsp; • &nbsp; Kate & Neil</a>
+      </div>
+      <img src="images/footer-bg.png">
     </footer>
 
     <!---------------------->
