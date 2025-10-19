@@ -327,8 +327,13 @@
     // Replace entire form contents with success message
     form.innerHTML = `
       <div class="m-4 text-center">
-        RSVP submitted – Thank you! 😊
+      RSVP submitted – Thank you! 😊
       </div>
     `;
+    // Scroll to #rsvp after submission
+    const rsvpSection = document.getElementById('rsvp');
+    if (rsvpSection) {
+      rsvpSection.scrollIntoView({ behavior: 'smooth' });
+    }
   });
 })();
