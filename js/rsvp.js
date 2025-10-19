@@ -292,8 +292,21 @@
 
     const payload = collectData();
 
-    // TODO: hook up your POST here
-    // await fetch('/your-endpoint', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+    try {
+      const res = await fetch('https://bjr173uis4.execute-api.us-east-1.amazonaws.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+      });
+      if (!res.ok) {
+      const errMsg = (await res.json()).error || 'Submission failed. Please try again.';
+      showError([errMsg]);
+      return;
+      }
+    } catch (err) {
+      showError(['Network error. Please try again.']);
+      return;
+    }
 
     // Clear draft on success (comment this out if you prefer to keep it)
     clearDraft();
