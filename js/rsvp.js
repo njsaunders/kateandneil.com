@@ -286,31 +286,54 @@
   // ---------- Submit ----------
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    const submitBtn = form.querySelector('.rsvp-form-btn');
+    if (!submitBtn) return;
+
     const errs = validate();
     if (errs.length) return showError(errs);
     showError([]);
 
+    // Show submitting state
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = `<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Submitting RSVP...`;
+
     const payload = collectData();
 
+    let success = false;
     try {
       const res = await fetch('https://bjr173uis4.execute-api.us-east-1.amazonaws.com/submit', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
       });
       if (!res.ok) {
-      const errMsg = (await res.json()).error || 'Submission failed. Please try again.';
-      showError([errMsg]);
-      return;
+        const errMsg = (await res.json()).error || 'Submission failed. Please try again.';
+        showError([errMsg]);
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Send RSVP →';
+        return;
       }
+      success = true;
     } catch (err) {
       showError(['Network error. Please try again.']);
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = 'Send RSVP →';
       return;
     }
 
     // Clear draft on success (comment this out if you prefer to keep it)
     clearDraft();
 
+    // Show success state
+    submitBtn.innerHTML = 'RSVP submitted – Thank you!';
+    submitBtn.classList.add('btn-success');
+    // Hide rest of form except button and success message
+    const bottomSection = form.querySelector('.bottom-section-form');
+    if (bottomSection) bottomSection.style.display = 'none';
+    $$('fieldset').forEach(fs => fs.style.display = 'none');
+    $('#addGuestBtn')?.style.setProperty('display', 'none');
+    $('#extraGuests')?.style.setProperty('display', 'none');
+    form.querySelector('.error-messages')?.classList.add('d-none');
     showSuccess('Thank you 😊 your RSVP has been sent!');
   });
 })();
