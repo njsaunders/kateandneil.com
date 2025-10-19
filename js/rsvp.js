@@ -286,18 +286,54 @@
   // ---------- Submit ----------
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    const submitBtn = form.querySelector('.rsvp-form-btn');
+    if (!submitBtn) return;
+
     const errs = validate();
     if (errs.length) return showError(errs);
     showError([]);
 
+    // Show submitting state
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = `<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Submitting RSVP...`;
+
     const payload = collectData();
 
-    // TODO: hook up your POST here
-    // await fetch('/your-endpoint', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+    let success = false;
+    try {
+      const res = await fetch('https://bjr173uis4.execute-api.us-east-1.amazonaws.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (!res.ok) {
+        const errMsg = (await res.json()).error || 'Submission failed. Please try again.';
+        showError([errMsg]);
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Send RSVP →';
+        return;
+      }
+      success = true;
+    } catch (err) {
+      showError(['Network error. Please try again.']);
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = 'Send RSVP →';
+      return;
+    }
 
     // Clear draft on success (comment this out if you prefer to keep it)
     clearDraft();
 
-    showSuccess('Thank you 😊 your RSVP has been sent!');
+    // Replace entire form contents with success message
+    form.innerHTML = `
+      <div class="m-4 text-center">
+      RSVP submitted – Thank you! 😊
+      </div>
+    `;
+    // Scroll to #rsvp after submission
+    const rsvpSection = document.getElementById('rsvp');
+    if (rsvpSection) {
+      rsvpSection.scrollIntoView({ behavior: 'smooth' });
+    }
   });
 })();
