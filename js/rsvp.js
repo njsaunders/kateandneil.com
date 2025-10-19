@@ -326,7 +326,7 @@
 
     // Replace entire form contents with success message
     form.innerHTML = `
-      <div class="alert alert-success mt-4" role="status" aria-live="polite" style="font-size:1.25rem;">
+      <div class="m-4 text-center">
         RSVP submitted – Thank you! 😊
       </div>
     `;
