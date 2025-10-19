@@ -324,16 +324,11 @@
     // Clear draft on success (comment this out if you prefer to keep it)
     clearDraft();
 
-    // Show success state
-    submitBtn.innerHTML = 'RSVP submitted – Thank you!';
-    submitBtn.classList.add('btn-success');
-    // Hide rest of form except button and success message
-    const bottomSection = form.querySelector('.bottom-section-form');
-    if (bottomSection) bottomSection.style.display = 'none';
-    $$('fieldset').forEach(fs => fs.style.display = 'none');
-    $('#addGuestBtn')?.style.setProperty('display', 'none');
-    $('#extraGuests')?.style.setProperty('display', 'none');
-    form.querySelector('.error-messages')?.classList.add('d-none');
-    showSuccess('Thank you 😊 your RSVP has been sent!');
+    // Replace entire form contents with success message
+    form.innerHTML = `
+      <div class="alert alert-success mt-4" role="status" aria-live="polite" style="font-size:1.25rem;">
+        RSVP submitted – Thank you! 😊
+      </div>
+    `;
   });
 })();
