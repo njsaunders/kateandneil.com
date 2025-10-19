@@ -66,7 +66,7 @@ nav a{text-decoration:none!important;}
   border-color:rgba(255,255,255,.18);
   color:#fff;
 }
-.on-hero .header a{color:#fff!important;}
+.on-hero .header a {color:#fff!important;}
 .on-hero .header .monogram .logo--light{display:block!important;}
 .on-hero .header .monogram .logo--dark{display:none!important;}
 
@@ -85,6 +85,7 @@ nav a{text-decoration:none!important;}
   font-size:20px!important;
   font-weight:500;
 }
+.header a.hero-rsvp-btn { color: #ffffff !important; }
 .hero-rsvp-btn.btn:hover{
   background-color:var(--bs-btn-hover-bg);
   opacity:.85;
@@ -285,6 +286,13 @@ a.standout-card:hover{background:#fff;}
 .offcanvas-right-full .rsvp-btn{border-width:2px;}
 .btn-close-white{filter:invert(1) grayscale(100%) brightness(200%);}
 .offcanvas-backdrop.show{opacity:0;}
+.header .menu-toggle{ color:#222; }
+.on-hero .header .menu-toggle{ color:#fff; }
+.header .menu-toggle svg{ display:block; }
+.header .menu-toggle:focus-visible{
+  outline:2px solid currentColor; outline-offset:2px;
+}
+
 
 /* ===============================
    Accordion (FAQs)
@@ -317,8 +325,15 @@ a.standout-card:hover{background:#fff;}
    =============================== */
 footer{color:var(--colour-forest)!important;position:relative;margin:0;}
 footer img{width:100%;z-index:0;}
-.footer-text{
+.footer-text-bottom{
   z-index:1;position:absolute;bottom:5%;left:0;
   text-align:center;margin:0 auto;width:100%;
+}
+.footer-text-top {
+  z-index:1;position:absolute;top:5%;left:0;
+  text-align:center;margin:0 auto;width:100%;
+  font-family: "Qwitcher Grypen", cursive;
+  font-weight: 400;
+  font-style: normal;font-size: 18px;
 }
 footer a{color:var(--colour-forest)!important;text-decoration:none;}
