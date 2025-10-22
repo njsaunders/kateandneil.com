@@ -86,11 +86,11 @@ window.addEventListener('DOMContentLoaded', function(){
     const li = document.createElement('li');
     li.className = 'polaroid-card';
     li.innerHTML = `
-      <a class="polaroid" href="${basePath}${name}" target="_blank" rel="noopener">
-        <div class="polaroid-media">
-          <img loading="lazy" src="${basePath}${name}" alt="Wedding photo ${name.replace('.jpg','')}">
-        </div>
-      </a>`;
+    <div class="polaroid" role="img" aria-label="Wedding photo ${name.replace('.jpg','')}">
+      <div class="polaroid-media">
+        <img loading="lazy" src="${basePath}${name}" alt="">
+      </div>
+    </div>`;
     return li;
   });
 
