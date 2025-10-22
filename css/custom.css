@@ -116,6 +116,7 @@ nav a{text-decoration:none!important;}
    =============================== */
 .text-left{text-align:left!important;}
 .mb-8{margin-bottom:4rem!important;}
+.pb-6 {padding-bottom: 60px !important;}
 .pb-8 {padding-bottom: 8rem !important;}
 .p-tight{line-height:1rem;}
 .object-fit-cover{object-fit:cover;object-position:bottom;}
@@ -332,12 +333,92 @@ a.standout-card:hover{background:#fff;}
 }
 
 /* ===============================
+   Polaroid carousel (flex, square)
+   =============================== */
+.polaroid-wrap { --pc-gap: 1rem; --pc-cards: 1.5; }
+@media (min-width: 768px){ .polaroid-wrap { --pc-cards: 3.5; } }
+@media (min-width: 1200px){ .polaroid-wrap { --pc-cards: 4.5; } }
+
+.polaroid-scroller{
+  overflow-x: auto;
+  overflow-y: visible;
+  -webkit-overflow-scrolling: touch;
+  padding-inline: 1rem;
+  cursor: grab;
+}
+.polaroid-scroller.dragging{ cursor: grabbing; }
+
+.polaroid-track{
+  display: flex;
+  align-items: stretch;
+  gap: var(--pc-gap);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.polaroid-card{
+  flex: 0 0 calc(100% / var(--pc-cards));
+  user-select: none;
+}
+
+/* Polaroid frame */
+.polaroid{
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 12px 24px rgba(0,0,0,.18), 0 2px 8px rgba(0,0,0,.12);
+  padding: 10px 10px 44px;  /* bottom lip */
+  transform-origin: center center;
+  display: block;
+  height: 100%;
+  text-decoration: none;
+}
+
+/* Square media wrapper */
+.polaroid-media{
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;      /* force perfect square */
+  border-radius: 4px;
+  overflow: hidden;
+  background: #eee;
+}
+
+/* Image fills the square */
+.polaroid-media img{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  background: #eee;
+}
+
+/* subtle random tilt */
+.polaroid-card:nth-child(6n+1) .polaroid{ transform: rotate(-1.2deg); }
+.polaroid-card:nth-child(6n+3) .polaroid{ transform: rotate(0.8deg); }
+.polaroid-card:nth-child(6n+5) .polaroid{ transform: rotate(-0.6deg); }
+
+/* hover/focus pop */
+.polaroid:focus,
+.polaroid:hover{
+  box-shadow: 0 16px 28px rgba(0,0,0,.22), 0 4px 10px rgba(0,0,0,.14);
+  outline: none;
+}
+
+
+
+/* ===============================
    Footer
    =============================== */
-footer{color:var(--colour-forest)!important;position:relative;margin:0; background: var(--colour-forest); padding: 150px 0 100px}
+footer{color:var(--colour-forest)!important;position:relative;margin:0; background: var(--colour-forest); padding: 0px 0 60px}
 footer img{width:100%;z-index:0;}
 .footer-text-bottom{
   z-index:1;
   text-align:center;margin:0 auto;width:100%;
 }
 footer a{color:var(--colour-cream)!important;text-decoration:none;}
+.dark-green-bg {
+  background: var(--colour-forest);
+}

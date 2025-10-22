@@ -573,7 +573,7 @@
       <!--------------------------------->
       <!------ FAQS SECTION START ------->
       <!--------------------------------->
-      <section id="faqs" class="position-relative text-center pt-2 section--forest pb-5">
+      <section id="faqs" class="position-relative text-center pt-2 section--forest pb-6">
 
         <!-- cream curve that visually belongs to the section above -->
         <svg class="section-top-curve" viewBox="0 0 100 20" preserveAspectRatio="none"
@@ -818,22 +818,33 @@
     <!-------/ MAIN SECTION END -------->
 
 
+
     <!----------------------------->
     <!------- FOOTER START -------->
     <!----------------------------->
 
-    <section class="position-relative text-center chevron-top pb-0 pt-0">
+    <section class="position-relative text-center chevron-top pb-0 pt-0 dark-green-bg">
+      
       <svg class="chevron-band flip-up" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
         <path d="M0,0 L50,30 L100,0 L100,100 L0,100 Z" fill="#dce3dc"/>
       </svg>
 
+      <img src="images/hearts.png" class="headings-img">
+
       <footer class="text-center">
-        <div class="container-fluid">
+        
+        <!-- Polaroid carousel -->
+        <div class="polaroid-wrap container-fluid py-4">
+          <div class="polaroid-scroller" id="polaroidCarousel" aria-label="Photo carousel" tabindex="0">
+            <ul class="polaroid-track" id="polaroidTrack" role="list"></ul>
+          </div>
+        </div>
+
+        <div class="container-fluid mt-4 pt-4">
           <!-- <p class="footer-text-top">We can't wait to celebrate with you!</p> -->
           <a href="index.html" class="footer-text-bottom">11 July 2026 &nbsp; • &nbsp; Kate & Neil</a>
         </div>
 
-        <!-- <img src="images/footer-bg.png"> -->
       </footer>
 
     </section>
