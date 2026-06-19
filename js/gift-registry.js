@@ -381,7 +381,7 @@
   const paymentConfig = {
     paypalUrl: null,
     bank: {
-      accountName: 'TBD',
+      accountName: 'Neil Saunders',
       sortCode: '40-44-06',
       accountNumber: '11311093'
     }
