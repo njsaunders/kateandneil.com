@@ -450,6 +450,23 @@ footer a{color:var(--colour-cream)!important;text-decoration:none;}
   min-width:0;
   padding-left:0;
   padding-right:0;
+  cursor:pointer;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+/* subtle enlarge on hover/focus-within */
+#experienceGrid > .experience-card:hover,
+#experienceGrid > .experience-card:focus-within{
+  transform:scale(1.03);
+  z-index:1;
+}
+#experienceGrid > .experience-card:hover .standout-card,
+#experienceGrid > .experience-card:focus-within .standout-card{
+  box-shadow:0 12px 24px rgba(0,0,0,.16);
+}
+/* selected card emphasis (uses the existing forest theme colour) */
+#experienceGrid .experience-card:has(.experience-choice:checked) .standout-card{
+  border-color:var(--colour-forest);
+  box-shadow:0 0 0 2px var(--colour-forest) inset;
 }
 /* force the thumbnail (and the placeholder) to a fixed, uniform size */
 #experienceGrid .experience-img{
@@ -461,12 +478,33 @@ footer a{color:var(--colour-cream)!important;text-decoration:none;}
   border-radius:4px;
   margin-bottom:.75rem;
 }
-/* Price (placeholder, euros) shown beneath each experience description */
-#experienceGrid .experience-price{
-  margin:.5rem 0 0;
-  font-weight:700;
-  font-size:1.15rem;
-  color:var(--colour-forest);
+/* per-card selection control */
+#experienceGrid .experience-check{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:.45rem;
+  margin-top:.85rem;
+}
+#experienceGrid .experience-check .form-check-input{
+  margin:0;
+  float:none;
+  width:1.15rem;
+  height:1.15rem;
+  cursor:pointer;
+}
+#experienceGrid .experience-check .form-check-label{
+  cursor:pointer;
+  font-weight:600;
+}
+/* read-only summary of selected experiences shown in the form */
+#experienceSummary{
+  margin-top:.35rem;
+  line-height:1.4rem;
+}
+#experienceSummary.is-empty{
+  color:#6c757d;
+  font-style:italic;
 }
 @media (min-width:601px){
   #experienceGrid{

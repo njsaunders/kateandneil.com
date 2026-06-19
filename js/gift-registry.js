@@ -270,23 +270,6 @@
       inner.appendChild(titleEl);
       inner.appendChild(descEl);
 
-      // Optional price (placeholder, in euros). Only rendered when provided so
-      // experiences without a price (e.g. in tests) render unchanged.
-      const rawPrice = experience.price;
-      let priceText = '';
-      if (typeof rawPrice === 'number' && isFinite(rawPrice)) {
-        priceText = '€' + rawPrice;
-      } else if (typeof rawPrice === 'string' && rawPrice.trim().length > 0) {
-        const trimmed = rawPrice.trim();
-        priceText = trimmed.charAt(0) === '€' ? trimmed : '€' + trimmed;
-      }
-      if (priceText.length > 0) {
-        const priceEl = doc.createElement('p');
-        priceEl.className = 'experience-price';
-        priceEl.textContent = priceText;
-        inner.appendChild(priceEl);
-      }
-
       card.appendChild(inner);
       container.appendChild(card);
     });
@@ -323,29 +306,29 @@
       id: 'picnic',
       title: 'Picnic at Botania Relais gardens',
       description:
-        'A private picnic in the Botanical Gardens in Ischia',
+        'A private picnic in the Botanical Gardens in Ischia.',
       image: 'images/experiences/1-picnic.jpg',
       price: 140 // placeholder (euros) — update with the real amount
     },
     {
       id: 'cooking-nee-noo',
-      title: 'An Italian cooking Class',
+      title: 'An Italian cooking class',
       description:
-        'Learn to cook some traditional Ischian dishes before enjoying them for dinner in a warm and familiar setting. (We promise to cook whatever we learn for anyone that get us this!)',
+        'Learn to cook some traditional Ischian dishes before enjoying them for dinner in a warm and familiar setting. (We promise to cook whatever we learn for anyone who gets us this!)',
       image: 'images/experiences/2-cooking.jpg',
       price: 220 // placeholder (euros) — update with the real amount
     },
     {
       id: 'private-dining',
-      title: 'Private Dining in an Enchanted Park',
+      title: 'Private dining in an enchanted park',
       description:
-        'A private dining experience in XX park, catered by a private chef.',
+        'A private dining experience in an enchanted park, catered by a private chef.',
       image: 'images/experiences/3-dinner-park.jpg',
       price: 500 // placeholder (euros) — update with the real amount
     },
     {
       id: 'boat-tour-ischia',
-      title: 'A privtae boat tour around Ischia',
+      title: 'A private boat tour around Ischia',
       description:
         'A private boat trip around the island — hidden coves, swimming ' +
         'stops in the clear blue, and a glass of something cold as the ' +
@@ -355,23 +338,23 @@
     },
     {
       id: 'boat-tour-capri',
-      title: 'All day boat Trip to Capri',
+      title: 'An all-day boat trip to Capri',
       description:
-        'A private boat trip to Capri including 3 michelin star dinners, presumably.',
+        'A private boat trip to Capri, including three Michelin-star dinners, presumably.',
       image: 'images/experiences/5-capri.jpg',
       price: 1500 // placeholder (euros) — update with the real amount
     },
     {
       id: 'spa',
-      title: 'Couples Spa treatment',
+      title: 'Couples\' spa treatment',
       description:
-        'An eco-boutique sanctuary perfect for romance - A "Romantic Escape" package that includes couples massages, a private thermal grotto, and an aperitif',
+        'An eco-boutique sanctuary perfect for romance — a "Romantic Escape" package with massages for two, a private thermal grotto, and an aperitif.',
       image: 'images/experiences/6-spa.webp',
       price: 300 // placeholder (euros) — update with the real amount
     },
     {
       id: 'wine-tasting',
-      title: 'Wine Tasting at Tommasone winery',
+      title: 'Wine tasting at Tommasone winery',
       description:
         'A visit to Tommasone winery in Ischia for a tour and wine tasting with sea views.',
       image: 'images/experiences/7-wine-tasting.jpeg',
@@ -381,15 +364,15 @@
       id: 'dinner-1',
       title: 'Dinner at Umberto a Mare',
       description:
-        'Dinner at Michelin star restaurant Umberto a Mare on the waters edge',
+        'Dinner at Michelin-starred restaurant Umberto a Mare, on the water\'s edge.',
       image: 'images/experiences/8-dinner-umberto.jpg',
       price: 400 // placeholder (euros) — update with the real amount
     },
     {
       id: 'dinner-2',
-      title: 'Dinner at Flutus',
+      title: 'Dinner at Fluctus',
       description:
-        'Breathtaking panoramic views and a romantic atmosphere',
+        'Breathtaking panoramic views and a romantic atmosphere.',
       image: 'images/experiences/9-dinner-fluctus.jpg',
       price: 400 // placeholder (euros) — update with the real amount
     }
@@ -458,7 +441,7 @@
 
     const formError = d.getElementById('formError');
     const experienceSelection = d.getElementById('experienceSelection');
-    const experienceChoices = d.getElementById('experienceChoices');
+    const experienceSummary = d.getElementById('experienceSummary');
     const experienceGrid = d.getElementById('experienceGrid');
     const experienceEmpty = d.getElementById('experienceEmpty');
 
@@ -478,8 +461,9 @@
       if (el && typeof value === 'string') el.value = value;
     }
     function choiceInputs() {
+      if (!experienceGrid) return [];
       return Array.prototype.slice.call(
-        form.querySelectorAll('.experience-choice')
+        experienceGrid.querySelectorAll('.experience-choice')
       );
     }
 
@@ -504,6 +488,44 @@
               };
             }
           );
+          // Inject a selection checkbox into each card and make the whole
+          // card a toggle (requirements 6.3, 7.4).
+          const cards = experienceGrid.querySelectorAll('.experience-card');
+          experiences.forEach(function (exp, i) {
+            const card = cards[i];
+            if (!card) return;
+            const inner = card.querySelector('.standout-card') || card;
+
+            const wrap = d.createElement('div');
+            wrap.className = 'form-check experience-check';
+
+            const input = d.createElement('input');
+            input.className = 'form-check-input experience-choice';
+            input.type = 'checkbox';
+            input.id = 'experience-' + exp.id;
+            input.value = String(exp.id);
+            input.name = 'selectedExperiences';
+
+            const label = d.createElement('label');
+            label.className = 'form-check-label';
+            label.setAttribute('for', input.id);
+            label.textContent = 'Contribute towards this';
+
+            wrap.appendChild(input);
+            wrap.appendChild(label);
+            inner.appendChild(wrap);
+
+            // Clicking anywhere on the card (other than the input/label, which
+            // toggle natively) flips the checkbox and notifies listeners.
+            card.addEventListener('click', function (e) {
+              if (e.target.closest('.experience-choice') ||
+                  e.target.closest('.form-check-label')) {
+                return;
+              }
+              input.checked = !input.checked;
+              input.dispatchEvent(new Event('change', { bubbles: true }));
+            });
+          });
         } else {
           experienceGrid.innerHTML = '';
           experienceGrid.classList.add('d-none');
@@ -516,30 +538,24 @@
       }
     }
 
-    // Build the selection checkboxes inside the form (requirements 6.3, 7.4).
-    function renderChoices() {
-      if (!experienceChoices) return;
-      experienceChoices.innerHTML = '';
-      experiences.forEach(function (exp) {
-        const wrapper = d.createElement('div');
-        wrapper.className = 'form-check';
+    // Render the read-only summary of selected experiences shown in the form.
+    function renderSummary() {
+      if (!experienceSummary) return;
+      const selectedIds = collect().selectedExperiences;
+      const titles = experiences
+        .filter(function (exp) { return selectedIds.indexOf(String(exp.id)) !== -1; })
+        .map(function (exp) { return exp.title; });
 
-        const input = d.createElement('input');
-        input.className = 'form-check-input experience-choice';
-        input.type = 'checkbox';
-        input.id = 'experience-' + exp.id;
-        input.value = exp.id;
-        input.name = 'selectedExperiences';
-
-        const label = d.createElement('label');
-        label.className = 'form-check-label';
-        label.setAttribute('for', input.id);
-        label.textContent = exp.title;
-
-        wrapper.appendChild(input);
-        wrapper.appendChild(label);
-        experienceChoices.appendChild(wrapper);
-      });
+      if (!titles.length) {
+        experienceSummary.classList.add('is-empty');
+        experienceSummary.textContent =
+          'None selected yet — tick the experiences above.';
+        return;
+      }
+      experienceSummary.classList.remove('is-empty');
+      experienceSummary.innerHTML = titles
+        .map(function (t) { return '<div>• ' + escapeHtml(t) + '</div>'; })
+        .join('');
     }
 
     // ----- payment link (requirements 5.4, 5.5) ------------------------
@@ -621,6 +637,7 @@
       choiceInputs().forEach(function (cb) {
         cb.checked = selected.indexOf(cb.value) !== -1;
       });
+      renderSummary();
     }
 
     // ----- validation messaging (requirements 7.1–7.8, 11.2) -----------
@@ -701,11 +718,29 @@
 
     function showThankYou() {
       // Replace the form contents with a polite live region so assistive tech
-      // announces the confirmation (requirements 8.5, 11.3).
+      // announces the confirmation (requirements 8.5, 11.3), and repeat the
+      // payment details so contributors can act on them straight away (req 5).
+      let paymentHtml = '';
+      const paymentCard = d.getElementById('paymentCard');
+      if (paymentCard) {
+        const clone = paymentCard.cloneNode(true);
+        clone.removeAttribute('id'); // avoid a duplicate id in the document
+        // Strip any nested ids too (e.g. #paypalLink) to keep ids unique.
+        Array.prototype.forEach.call(clone.querySelectorAll('[id]'), function (el) {
+          el.removeAttribute('id');
+        });
+        paymentHtml =
+          '<div class="mt-4 text-start">' +
+          '<p class="text-center mb-3">Whenever you’re ready, here are the ' +
+          'ways to contribute:</p>' +
+          clone.outerHTML +
+          '</div>';
+      }
       form.innerHTML =
         '<div class="alert alert-success m-3 text-center" role="status" ' +
         'aria-live="polite">Thank you so much — your contribution details are ' +
-        'on their way to us. We will be in touch with a proper thank-you. 💛</div>';
+        'on their way to us. We will be in touch with a proper thank-you. 💛</div>' +
+        paymentHtml;
       scrollIntoViewSafe(form);
     }
 
@@ -780,9 +815,9 @@
 
     // ----- wire everything ---------------------------------------------
     renderGrid();
-    renderChoices();
     applyPaymentConfig();
     restoreDraft();
+    renderSummary();
 
     // Autosave on any field change (requirement 10.1).
     form.addEventListener('input', saveDraftDebounced, true);
@@ -791,6 +826,16 @@
     // Clear invalid state/message as the guest edits (requirement 7.7).
     form.addEventListener('input', refreshActiveErrors);
     form.addEventListener('change', refreshActiveErrors);
+
+    // Card selection lives outside the form: keep the summary, draft, and
+    // validation state in sync when a card checkbox toggles.
+    if (experienceGrid) {
+      experienceGrid.addEventListener('change', function () {
+        renderSummary();
+        saveDraftDebounced();
+        refreshActiveErrors();
+      });
+    }
 
     form.addEventListener('submit', handleSubmit);
 

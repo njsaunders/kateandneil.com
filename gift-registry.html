@@ -166,7 +166,8 @@
         <img src="images/mustelids.png" alt="" class="headings-img">
 
         <div class="container">
-          <h1 class="font-serif mb-4">Honeymoon experiences</h1>
+          <h1 class="font-serif mb-2">Honeymoon experiences</h1>
+          <p class="text-muted mb-4">Check the experiences you'd like to contribute towards</p>
 
           <!-- Experience cards are rendered here by js/gift-registry.js -->
           <div id="experienceGrid" class="row justify-content-center gx-4 gy-4"></div>
@@ -184,76 +185,14 @@
 
 
       <!------------------------------------->
-      <!------ PAYMENT SECTION START -------->
+      <!------ FORM SECTION START ----------->
       <!------------------------------------->
-      <section id="payment" class="position-relative text-center section--cream">
+      <section id="contribute" class="position-relative text-center section--cream">
 
-        <!-- cream curve that visually belongs to the section above -->
+        <!-- forest curve that visually belongs to the section above -->
         <svg class="section-top-curve" viewBox="0 0 100 20" preserveAspectRatio="none"
              xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M0,0 H100 V20 C75,8 25,8 0,20 Z" fill="#dce3dc"/>
-        </svg>
-
-        <img src="images/drink.png" alt="" class="headings-img">
-
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-12 col-md-10 col-lg-8 col-xl-6">
-
-              <h1 class="font-serif mb-3">Ways to contribute</h1>
-              <p class="text-muted mb-4">
-                We’ve picked fee-free options so every penny goes toward the trip
-                rather than transaction charges.
-              </p>
-
-              <div class="standout-card text-start">
-
-                <!-- PayPal -->
-                <div class="d-flex align-items-center">
-                  <span class="flex-grow-1 min-w-0">
-                    <strong>PayPal</strong>
-                  </span>
-                  <!-- TODO: replace the TBD PayPal handle once the couple provide it. -->
-                  <a id="paypalLink" class="text-nowrap ms-2"
-                     href="https://www.paypal.me/TBD"
-                     target="_blank" rel="noopener">
-                    paypal.me/TBD&nbsp;<strong>↗︎</strong>
-                  </a>
-                </div>
-
-                <div class="divider"></div>
-
-                <!-- Bank transfer -->
-                <div>
-                  <strong>Bank transfer</strong>
-                  <div class="mt-2">
-                    <div>Account name: <span class="text-nowrap">Neil Saunders</span></div>
-                    <div>Sort code: <span class="text-nowrap">40-44-06</span></div>
-                    <div>Account number: <span class="text-nowrap">11311093</span></div>
-                  </div>
-                </div>
-
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-      </section>
-      <!------------------------------------->
-      <!------- PAYMENT SECTION END --------->
-      <!------------------------------------->
-
-
-      <!------------------------------------->
-      <!------ FORM SECTION START ----------->
-      <!------------------------------------->
-      <section id="contribute" class="position-relative text-center section--forest">
-
-        <!-- cream curve that visually belongs to the section above -->
-        <svg class="section-top-curve" viewBox="0 0 100 20" preserveAspectRatio="none"
-             xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M0,0 H100 V20 C75,8 25,8 0,20 Z" fill="var(--colour-cream)"/>
         </svg>
 
         <img src="images/hearts.png" alt="" class="headings-img">
@@ -292,11 +231,10 @@
                   </div>
                 </div>
 
-                <!-- Experience selection group (controls injected by js/gift-registry.js) -->
+                <!-- Selected experiences (read-only summary; selection happens on the cards above) -->
                 <fieldset class="att-row m-2" id="experienceSelection" aria-required="true">
-                  <legend class="fs-6">Which experience(s) would you like to contribute toward?*</legend>
-                  <div id="experienceChoices" class="d-flex flex-column gap-2 text-start" role="group"
-                       aria-label="Honeymoon experience selection"></div>
+                  <legend class="fs-6">Experiences you'd like to contribute toward*</legend>
+                  <div id="experienceSummary" class="text-start" role="status" aria-live="polite"></div>
                 </fieldset>
 
                 <!-- Optional amount / note -->
@@ -356,6 +294,68 @@
       </section>
       <!------------------------------------->
       <!------- FORM SECTION END ------------>
+      <!------------------------------------->
+
+
+      <!------------------------------------->
+      <!------ PAYMENT SECTION START -------->
+      <!------------------------------------->
+      <section id="payment" class="position-relative text-center section--forest">
+
+        <!-- cream curve that visually belongs to the section above -->
+        <svg class="section-top-curve" viewBox="0 0 100 20" preserveAspectRatio="none"
+             xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M0,0 H100 V20 C75,8 25,8 0,20 Z" fill="var(--colour-cream)"/>
+        </svg>
+
+        <img src="images/drink.png" alt="" class="headings-img">
+
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-8 col-xl-6">
+
+              <h1 class="font-serif mb-3">Ways to contribute</h1>
+              <p class="text-muted mb-4">
+                We’ve picked fee-free options so every penny goes toward the trip
+                rather than transaction charges.
+              </p>
+
+              <div class="standout-card text-start" id="paymentCard">
+
+                <!-- PayPal -->
+                <div class="d-flex align-items-center">
+                  <span class="flex-grow-1 min-w-0">
+                    <strong>PayPal</strong>
+                  </span>
+                  <!-- TODO: replace the TBD PayPal handle once the couple provide it. -->
+                  <a id="paypalLink" class="text-nowrap ms-2"
+                     href="https://www.paypal.me/TBD"
+                     target="_blank" rel="noopener">
+                    paypal.me/TBD&nbsp;<strong>↗︎</strong>
+                  </a>
+                </div>
+
+                <div class="divider"></div>
+
+                <!-- Bank transfer -->
+                <div>
+                  <strong>Bank transfer</strong>
+                  <div class="mt-2">
+                    <div>Account name: <span class="text-nowrap">Neil Saunders</span></div>
+                    <div>Sort code: <span class="text-nowrap">40-44-06</span></div>
+                    <div>Account number: <span class="text-nowrap">11311093</span></div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </section>
+      <!------------------------------------->
+      <!------- PAYMENT SECTION END --------->
       <!------------------------------------->
 
     </main>
