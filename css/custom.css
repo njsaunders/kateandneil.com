@@ -461,6 +461,13 @@ footer a{color:var(--colour-cream)!important;text-decoration:none;}
   border-radius:4px;
   margin-bottom:.75rem;
 }
+/* Price (placeholder, euros) shown beneath each experience description */
+#experienceGrid .experience-price{
+  margin:.5rem 0 0;
+  font-weight:700;
+  font-size:1.15rem;
+  color:var(--colour-forest);
+}
 @media (min-width:601px){
   #experienceGrid{
     /* three columns above 600px (a 3-across grid) */

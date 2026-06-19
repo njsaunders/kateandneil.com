@@ -269,6 +269,24 @@
       inner.appendChild(img);
       inner.appendChild(titleEl);
       inner.appendChild(descEl);
+
+      // Optional price (placeholder, in euros). Only rendered when provided so
+      // experiences without a price (e.g. in tests) render unchanged.
+      const rawPrice = experience.price;
+      let priceText = '';
+      if (typeof rawPrice === 'number' && isFinite(rawPrice)) {
+        priceText = '€' + rawPrice;
+      } else if (typeof rawPrice === 'string' && rawPrice.trim().length > 0) {
+        const trimmed = rawPrice.trim();
+        priceText = trimmed.charAt(0) === '€' ? trimmed : '€' + trimmed;
+      }
+      if (priceText.length > 0) {
+        const priceEl = doc.createElement('p');
+        priceEl.className = 'experience-price';
+        priceEl.textContent = priceText;
+        inner.appendChild(priceEl);
+      }
+
       card.appendChild(inner);
       container.appendChild(card);
     });
@@ -302,76 +320,78 @@
   // fall back to images/placeholder.jpg at render time (requirement 4.3).
   const experiences = [
     {
-      id: 'new-forest-wander',
-      title: 'A New Forest wander',
+      id: 'picnic',
+      title: 'Picnic at Botania Relais gardens',
       description:
-        'A slow morning among the ponies and ancient woodland — the part of ' +
-        'home we never tire of, shared at an unhurried pace.',
-      image: 'images/experiences/gift-1.png'
+        'A private picnic in the Botanical Gardens in Ischia',
+      image: 'images/experiences/1-picnic.jpg',
+      price: 140 // placeholder (euros) — update with the real amount
     },
     {
-      id: 'a-proper-dinner',
-      title: 'A proper dinner out',
+      id: 'cooking-nee-noo',
+      title: 'An Italian cooking Class',
       description:
-        'A long, candlelit dinner somewhere lovely, with no plans for the ' +
-        'rest of the evening other than each other.',
-      image: 'images/experiences/gift-2.png'
+        'Learn to cook some traditional Ischian dishes before enjoying them for dinner in a warm and familiar setting. (We promise to cook whatever we learn for anyone that get us this!)',
+      image: 'images/experiences/2-cooking.jpg',
+      price: 220 // placeholder (euros) — update with the real amount
     },
     {
-      id: 'an-adventure-day',
-      title: 'An adventure day',
+      id: 'private-dining',
+      title: 'Private Dining in an Enchanted Park',
       description:
-        'A day trip to somewhere new — a map, good walking shoes, and ' +
-        'absolutely no itinerary to keep to.',
-      image: 'images/experiences/gift-3.png'
+        'A private dining experience in XX park, catered by a private chef.',
+      image: 'images/experiences/3-dinner-park.jpg',
+      price: 500 // placeholder (euros) — update with the real amount
     },
     {
-      id: 'a-cosy-night-in',
-      title: 'A cosy night in',
+      id: 'boat-tour-ischia',
+      title: 'A privtae boat tour around Ischia',
       description:
-        'A bottle of something nice, a good film, and the heating on — the ' +
-        'simple pleasures we look forward to most.',
-      image: 'images/experiences/gift-4.png'
+        'A private boat trip around the island — hidden coves, swimming ' +
+        'stops in the clear blue, and a glass of something cold as the ' +
+        'Ischian coastline drifts by.',
+      image: 'images/experiences/4-boat-tour.jpg',
+      price: 550 // placeholder (euros) — update with the real amount
     },
     {
-      id: 'a-spa-afternoon',
-      title: 'A spa afternoon',
+      id: 'boat-tour-capri',
+      title: 'All day boat Trip to Capri',
       description:
-        'A lazy few hours of steam, robes, and doing gloriously little. ' +
-        'Married life, we are told, is exhausting.',
-      image: 'images/experiences/gift-5.png'
+        'A private boat trip to Capri including 3 michelin star dinners, presumably.',
+      image: 'images/experiences/5-capri.jpg',
+      price: 1500 // placeholder (euros) — update with the real amount
     },
     {
-      id: 'a-sunset-sail',
-      title: 'A sunset sail',
+      id: 'spa',
+      title: 'Couples Spa treatment',
       description:
-        'An evening out on the water as the light goes golden — the sort of ' +
-        'thing we would never quite get round to booking ourselves.',
-      image: 'images/experiences/gift-6.png'
+        'An eco-boutique sanctuary perfect for romance - A "Romantic Escape" package that includes couples massages, a private thermal grotto, and an aperitif',
+      image: 'images/experiences/6-spa.webp',
+      price: 300 // placeholder (euros) — update with the real amount
     },
     {
-      id: 'a-countryside-picnic',
-      title: 'A countryside picnic',
+      id: 'wine-tasting',
+      title: 'Wine Tasting at Tommasone winery',
       description:
-        'A proper hamper, a sunny field, and absolutely nowhere we need to ' +
-        'be. Pork pie optional but encouraged.',
-      image: 'images/experiences/gift-7.png'
+        'A visit to Tommasone winery in Ischia for a tour and wine tasting with sea views.',
+      image: 'images/experiences/7-wine-tasting.jpeg',
+      price: 130 // placeholder (euros) — update with the real amount
     },
     {
-      id: 'a-coastal-stroll',
-      title: 'A coastal stroll',
+      id: 'dinner-1',
+      title: 'Dinner at Umberto a Mare',
       description:
-        'A blustery walk along the cliffs followed by chips on the front — ' +
-        'the very best of a British seaside day.',
-      image: 'images/experiences/gift-8.png'
+        'Dinner at Michelin star restaurant Umberto a Mare on the waters edge',
+      image: 'images/experiences/8-dinner-umberto.jpg',
+      price: 400 // placeholder (euros) — update with the real amount
     },
     {
-      id: 'a-lazy-brunch',
-      title: 'A lazy brunch',
+      id: 'dinner-2',
+      title: 'Dinner at Flutus',
       description:
-        'A long, unhurried breakfast with good coffee and no alarm — the ' +
-        'perfect lazy start to a honeymoon morning.',
-      image: 'images/experiences/gift-9.png'
+        'Breathtaking panoramic views and a romantic atmosphere',
+      image: 'images/experiences/9-dinner-fluctus.jpg',
+      price: 400 // placeholder (euros) — update with the real amount
     }
   ];
 
