@@ -513,8 +513,9 @@ footer a{color:var(--colour-cream)!important;text-decoration:none;}
   }
 }
 
-/* Ensure the contribution form's submit button clears the footer chevron band,
-   which overlaps upward into the bottom of this section. */
-#contribute{
+/* The payment section is the last block before the footer chevron, which
+   overlaps upward into the bottom of the section. Add bottom padding so the
+   payment card clears it and isn't truncated. */
+#payment{
   padding-bottom:clamp(90px,12vw,150px);
 }

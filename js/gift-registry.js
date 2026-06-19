@@ -382,7 +382,7 @@
   // `paypalUrl` is nullable: when null the PayPal link is left as the page's
   // static placeholder until the couple provide a real handle (P2).
   const paymentConfig = {
-    paypalUrl: null,
+    paypalUrl: 'https://paypal.me/katebrookhart',
     bank: {
       accountName: 'Neil Saunders',
       sortCode: '40-44-06',
