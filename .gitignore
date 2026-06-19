@@ -1,0 +1,10 @@
+# Dev-only JS test tooling (not part of the published static site)
+node_modules/
+coverage/
+
+# Lockfile is intentionally ignored: the test tooling is dev-only and the
+# published site has no build step that depends on a pinned dependency tree.
+package-lock.json
+
+# OS cruft
+.DS_Store

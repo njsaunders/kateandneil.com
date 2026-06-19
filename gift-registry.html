@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift Registry • Kate & Neil</title>
+    <meta name="description" content="No gifts expected, but if you’d like to, you can contribute toward Kate & Neil’s honeymoon experiences – New Forest wedding, 11 July 2026.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300..900&family=Qwitcher+Grypen:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap (local) -->
+    <link rel="stylesheet" href="vendor/bootstrap.min.css">
+    <!-- Your overrides -->
+    <link rel="stylesheet" href="css/custom.css">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon_io/favicon-16x16.png">
+    <link rel="icon" href="images/favicon_io/favicon.ico">
+    <link rel="manifest" href="images/favicon_io/site.webmanifest">
+    <meta name="theme-color" content="#ffffff">
+  </head>
+
+  <body class="bg-cream text-dark">
+
+
+    <!--------------------------->
+    <!------ HEADER START ------->
+    <!--------------------------->
+
+    <header class="header position-fixed top-0 start-0 end-0 z-3">
+      <nav class="container-fluid">
+        <div class="mt-3 mb-3 d-flex align-items-center justify-content-between rounded-4 px-3 py-2 u-glass-dark u-blur-10">
+
+          <!-- Logo -->
+          <a href="index.html#home" class="monogram d-inline-flex align-items-center gap-2 text-decoration-none">
+            <!-- light version (for hero) -->
+            <img src="images/monogram-monogram-light.png" alt="Kate & Neil" class="logo--light" height="32">
+            <!-- dark version (for non-hero) -->
+            <img src="images/monogram-monogram-dark.png"  alt="" class="logo--dark"  height="32" aria-hidden="true">
+            <span class="visually-hidden">Home</span>
+          </a>
+
+
+          <!-- NAV + RSVP (one line from md+) -->
+          <div class="nav-links d-none d-md-flex align-items-center gap-3 flex-nowrap">
+            <ul class="d-flex list-unstyled m-0 gap-4 text-white-50">
+              <li><a href="index.html#home" class="link-light">Home</a></li>
+              <li><a href="index.html#getting-there" class="link-light">Getting there</a></li>
+              <li><a href="index.html#accommodation" class="link-light">Accommodation</a></li>
+              <li><a href="index.html#faqs" class="link-light">FAQs</a></li>
+              <li><a href="gift-registry.html" class="link-light" aria-current="page">Gift Registry</a></li>
+            </ul>
+            <a href="index.html#rsvp" class="btn btn-outline-light rsvp-btn rsvp-draw">
+              RSVP
+              <svg class="rsvp-outline" viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true">
+                <!-- The rectangle path the stroke animates along -->
+                <rect x="1.5" y="1.5" width="97" height="37" rx="4" ry="4" pathLength="100"></rect>
+              </svg>
+            </a>
+
+          </div>
+
+          <!-- Mobile menu button -->
+          <button
+            class="d-md-none btn btn-link menu-toggle p-2"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#mobileMenu"
+            aria-controls="mobileMenu"
+            aria-label="Open menu">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none"
+                 stroke="currentColor" stroke-width="2">
+              <path d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+
+
+
+        </div>
+      </nav>
+
+
+      <!-- Mobile menu (full-screen from right) -->
+      <div class="offcanvas offcanvas-end offcanvas-right-full border-0"
+           tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
+
+        <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-4"
+                data-bs-dismiss="offcanvas" aria-label="Close"></button>
+
+        <div class="offcanvas-body p-0 d-flex flex-column">
+          <div class="flex-grow-1 d-flex flex-column align-items-center justify-content-center text-center gap-2">
+            <a class="menu-link fs-2" href="index.html#home" data-bs-dismiss="offcanvas">Home</a>
+            <a class="menu-link fs-2" href="index.html#getting-there" data-bs-dismiss="offcanvas">Getting there</a>
+            <a class="menu-link fs-2" href="index.html#accommodation" data-bs-dismiss="offcanvas">Accommodation</a>
+            <a class="menu-link fs-2" href="index.html#faqs" data-bs-dismiss="offcanvas">FAQs</a>
+            <a class="menu-link fs-2" href="gift-registry.html" data-bs-dismiss="offcanvas" aria-current="page">Gift Registry</a>
+            <a href="index.html#rsvp" class="hero-rsvp-btn mobile-menu-rsvp btn btn-outline-light mt-4 px-4 py-2" data-bs-dismiss="offcanvas">RSVP</a>
+          </div>
+        </div>
+      </div>
+
+
+
+    </header>
+
+
+    <!-------------------->
+    <!---- HEADER END ---->
+    <!-------------------->
+
+
+    <!------- MAIN SECTION START -------->
+    <main id="registry">
+
+      <!--------------------------------->
+      <!------ INTRO SECTION START ------>
+      <!--------------------------------->
+      <!-- No #home hero on this page: reserve top spacing equal to the fixed header height. -->
+      <section class="position-relative text-center section--cream" style="padding-top: var(--header-offset);">
+
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-8 col-xl-7">
+
+              <img src="images/rings.png" alt="" class="headings-img">
+              <h1>Gift Registry</h1>
+
+              <p class="lead">
+                First things first: please don’t feel you need to bring a gift.
+                Having you with us to celebrate is genuinely all we want. 
+    
+              </p>
+              <p class="text-muted">
+                That said, a few people have asked, so here it is. Also, Neil is so old and 
+                impulsive we've already got everything we'll ever need, so we’re not doing
+                a traditional list of china and toasters. Instead, if you’d like to,
+                you’re warmly invited to chip in toward a honeymoon experience or two.
+                Anything at all is lovely, and absolutely no pressure either way.
+              </p>
+
+            </div>
+          </div>
+        </div>
+
+      </section>
+      <!--------------------------------->
+      <!------- INTRO SECTION END ------->
+      <!--------------------------------->
+
+
+      <!------------------------------------->
+      <!------ EXPERIENCES SECTION START ---->
+      <!------------------------------------->
+      <section id="experiences" class="position-relative text-center section--forest">
+
+        <!-- cream curve that visually belongs to the section above -->
+        <svg class="section-top-curve" viewBox="0 0 100 20" preserveAspectRatio="none"
+             xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M0,0 H100 V20 C75,8 25,8 0,20 Z" fill="var(--colour-cream)"/>
+        </svg>
+
+        <img src="images/mustelids.png" alt="" class="headings-img">
+
+        <div class="container">
+          <h1 class="font-serif mb-4">Honeymoon experiences</h1>
+
+          <!-- Experience cards are rendered here by js/gift-registry.js -->
+          <div id="experienceGrid" class="row justify-content-center gx-4 gy-4"></div>
+
+          <!-- Shown only when there are no experiences to display -->
+          <p id="experienceEmpty" class="text-muted d-none">
+            There are no honeymoon experiences available just yet, please check back soon.
+          </p>
+        </div>
+
+      </section>
+      <!------------------------------------->
+      <!------- EXPERIENCES SECTION END ----->
+      <!------------------------------------->
+
+
+      <!------------------------------------->
+      <!------ PAYMENT SECTION START -------->
+      <!------------------------------------->
+      <section id="payment" class="position-relative text-center section--cream">
+
+        <!-- cream curve that visually belongs to the section above -->
+        <svg class="section-top-curve" viewBox="0 0 100 20" preserveAspectRatio="none"
+             xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M0,0 H100 V20 C75,8 25,8 0,20 Z" fill="#dce3dc"/>
+        </svg>
+
+        <img src="images/drink.png" alt="" class="headings-img">
+
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-8 col-xl-6">
+
+              <h1 class="font-serif mb-3">Ways to contribute</h1>
+              <p class="text-muted mb-4">
+                We’ve picked fee-free options so every penny goes toward the trip
+                rather than transaction charges.
+              </p>
+
+              <div class="standout-card text-start">
+
+                <!-- PayPal -->
+                <div class="d-flex align-items-center">
+                  <span class="flex-grow-1 min-w-0">
+                    <strong>PayPal</strong>
+                  </span>
+                  <!-- TODO: replace the TBD PayPal handle once the couple provide it. -->
+                  <a id="paypalLink" class="text-nowrap ms-2"
+                     href="https://www.paypal.me/TBD"
+                     target="_blank" rel="noopener">
+                    paypal.me/TBD&nbsp;<strong>↗︎</strong>
+                  </a>
+                </div>
+
+                <div class="divider"></div>
+
+                <!-- Bank transfer -->
+                <div>
+                  <strong>Bank transfer</strong>
+                  <div class="mt-2">
+                    <!-- TODO: replace the TBD account holder name once the couple provide it. -->
+                    <div>Account name: <span class="text-nowrap">TBD</span></div>
+                    <div>Sort code: <span class="text-nowrap">40-44-06</span></div>
+                    <div>Account number: <span class="text-nowrap">11311093</span></div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </section>
+      <!------------------------------------->
+      <!------- PAYMENT SECTION END --------->
+      <!------------------------------------->
+
+
+      <!------------------------------------->
+      <!------ FORM SECTION START ----------->
+      <!------------------------------------->
+      <section id="contribute" class="position-relative text-center section--forest">
+
+        <!-- cream curve that visually belongs to the section above -->
+        <svg class="section-top-curve" viewBox="0 0 100 20" preserveAspectRatio="none"
+             xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M0,0 H100 V20 C75,8 25,8 0,20 Z" fill="var(--colour-cream)"/>
+        </svg>
+
+        <img src="images/hearts.png" alt="" class="headings-img">
+
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-8 col-xl-6 gx-0">
+
+              <h1 class="font-serif">Let us know</h1>
+              <p class="text-center text-muted">
+                If you do contribute, pop your details here so we can send a proper
+                thank-you. Only your name and email are needed.
+              </p>
+
+              <!-- form start -->
+              <form id="giftForm" class="card shadow-sm p-3 p-md-4 bg-white" novalidate>
+
+                <!-- Your details -->
+                <div class="row m-2">
+                  <div class="col-md-12">
+                    <div class="form-floating">
+                      <input id="name" name="name" type="text" class="form-control"
+                             placeholder="Your name" maxlength="100" required aria-required="true">
+                      <label for="name">Your name*</label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row m-2">
+                  <div class="col-md-12">
+                    <div class="form-floating">
+                      <input id="email" name="email" type="email" class="form-control"
+                             placeholder="Email" maxlength="254" required aria-required="true">
+                      <label for="email">Your contact email*</label>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Experience selection group (controls injected by js/gift-registry.js) -->
+                <fieldset class="att-row m-2" id="experienceSelection" aria-required="true">
+                  <legend class="fs-6">Which experience(s) would you like to contribute toward?*</legend>
+                  <div id="experienceChoices" class="d-flex flex-column gap-2 text-start" role="group"
+                       aria-label="Honeymoon experience selection"></div>
+                </fieldset>
+
+                <!-- Optional amount / note -->
+                <div class="row m-2">
+                  <div class="col-md-12">
+                    <div class="form-floating">
+                      <input id="amountOrNote" name="amountOrNote" type="text" class="form-control"
+                             placeholder="Amount or note" maxlength="200">
+                      <label for="amountOrNote">Amount or note (optional)</label>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Optional message -->
+                <div class="row m-2 mb-3">
+                  <div class="col-md-12">
+                    <div class="form-floating">
+                      <textarea id="message" name="message" class="form-control"
+                                placeholder="Your message" maxlength="1000"
+                                style="height: 8rem;"></textarea>
+                      <label for="message">Message (optional)</label>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ERROR MESSAGES (assertive live region) -->
+                <div class="error-messages">
+                  <div class="row">
+                    <div class="col-12">
+                      <div id="formError" class="alert alert-danger d-none" role="alert" aria-live="assertive"></div>
+                    </div>
+                  </div>
+                </div>
+                <!-- / -->
+
+                <div class="d-flex gap-2 align-items-center m-3 mt-3">
+                  <button type="submit" class="rsvp-form-btn btn btn-dark">Send contribution →</button>
+                </div>
+
+                <!-- SUCCESS MESSAGE (polite live region) -->
+                <div class="success-message">
+                  <div class="row">
+                    <div class="col-12">
+                      <div id="formSuccess" class="alert alert-success d-none mt-3" role="status" aria-live="polite"></div>
+                    </div>
+                  </div>
+                </div>
+                <!-- / -->
+
+              </form>
+              <!--/ form end -->
+
+            </div>
+          </div>
+        </div>
+
+      </section>
+      <!------------------------------------->
+      <!------- FORM SECTION END ------------>
+      <!------------------------------------->
+
+    </main>
+    <!-------/ MAIN SECTION END -------->
+
+
+
+    <!----------------------------->
+    <!------- FOOTER START -------->
+    <!----------------------------->
+
+    <section class="position-relative text-center chevron-top pb-0 pt-0 dark-green-bg">
+
+      <svg class="chevron-band flip-up" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,0 L50,30 L100,0 L100,100 L0,100 Z" fill="#dce3dc"/>
+      </svg>
+
+      <img src="images/hearts.png" alt="" class="headings-img">
+
+      <footer class="text-center">
+
+        <div class="container-fluid mt-4 pt-4">
+          <a href="index.html" class="footer-text-bottom">11 July 2026 &nbsp; • &nbsp; Kate & Neil</a>
+        </div>
+
+      </footer>
+
+    </section>
+
+
+
+    <!---------------------->
+    <!----- FOOTER END ----->
+    <!---------------------->
+
+
+    <!-- Bootstrap JS (local) + Custom JS -->
+    <script src="vendor/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/gift-registry.js" defer></script>
+
+
+  </body>
+
+</html>

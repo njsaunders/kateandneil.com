@@ -422,3 +422,20 @@ footer a{color:var(--colour-cream)!important;text-decoration:none;}
 .dark-green-bg {
   background: var(--colour-forest);
 }
+
+/* ===============================
+   Gift Registry: Experience Grid
+   (additive, grid-scoped only — reuses existing theme;
+    no new colours, no card/divider overrides)
+   =============================== */
+#experienceGrid{
+  display:grid;
+  grid-template-columns:1fr;   /* single column at <=600px */
+  gap:1rem;
+}
+@media (min-width:601px){
+  #experienceGrid{
+    /* two or more columns above 600px */
+    grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+  }
+}
