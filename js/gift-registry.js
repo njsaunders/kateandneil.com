@@ -307,7 +307,7 @@
       description:
         'A slow morning among the ponies and ancient woodland — the part of ' +
         'home we never tire of, shared at an unhurried pace.',
-      image: 'images/new-forest-ponies.jpg'
+      image: 'images/experiences/gift-1.png'
     },
     {
       id: 'a-proper-dinner',
@@ -315,7 +315,7 @@
       description:
         'A long, candlelit dinner somewhere lovely, with no plans for the ' +
         'rest of the evening other than each other.',
-      image: 'images/crown-hotel.jpg'
+      image: 'images/experiences/gift-2.png'
     },
     {
       id: 'an-adventure-day',
@@ -323,7 +323,55 @@
       description:
         'A day trip to somewhere new — a map, good walking shoes, and ' +
         'absolutely no itinerary to keep to.',
-      image: 'images/map-static.jpg'
+      image: 'images/experiences/gift-3.png'
+    },
+    {
+      id: 'a-cosy-night-in',
+      title: 'A cosy night in',
+      description:
+        'A bottle of something nice, a good film, and the heating on — the ' +
+        'simple pleasures we look forward to most.',
+      image: 'images/experiences/gift-4.png'
+    },
+    {
+      id: 'a-spa-afternoon',
+      title: 'A spa afternoon',
+      description:
+        'A lazy few hours of steam, robes, and doing gloriously little. ' +
+        'Married life, we are told, is exhausting.',
+      image: 'images/experiences/gift-5.png'
+    },
+    {
+      id: 'a-sunset-sail',
+      title: 'A sunset sail',
+      description:
+        'An evening out on the water as the light goes golden — the sort of ' +
+        'thing we would never quite get round to booking ourselves.',
+      image: 'images/experiences/gift-6.png'
+    },
+    {
+      id: 'a-countryside-picnic',
+      title: 'A countryside picnic',
+      description:
+        'A proper hamper, a sunny field, and absolutely nowhere we need to ' +
+        'be. Pork pie optional but encouraged.',
+      image: 'images/experiences/gift-7.png'
+    },
+    {
+      id: 'a-coastal-stroll',
+      title: 'A coastal stroll',
+      description:
+        'A blustery walk along the cliffs followed by chips on the front — ' +
+        'the very best of a British seaside day.',
+      image: 'images/experiences/gift-8.png'
+    },
+    {
+      id: 'a-lazy-brunch',
+      title: 'A lazy brunch',
+      description:
+        'A long, unhurried breakfast with good coffee and no alarm — the ' +
+        'perfect lazy start to a honeymoon morning.',
+      image: 'images/experiences/gift-9.png'
     }
   ];
 

@@ -70,6 +70,14 @@ nav a{text-decoration:none!important;}
 .on-hero .header .monogram .logo--light{display:block!important;}
 .on-hero .header .monogram .logo--dark{display:none!important;}
 
+/* Keep nav links visible on hover/focus: Bootstrap's .link-light:hover sets a
+   near-white colour (with !important) which is invisible on the light glass
+   header. Re-assert the correct colour for each header state. */
+.header a.link-light:hover,
+.header a.link-light:focus{color:#222!important;}
+.on-hero .header a.link-light:hover,
+.on-hero .header a.link-light:focus{color:#fff!important;}
+
 /* ===============================
    Hero
    =============================== */
@@ -431,11 +439,37 @@ footer a{color:var(--colour-cream)!important;text-decoration:none;}
 #experienceGrid{
   display:grid;
   grid-template-columns:1fr;   /* single column at <=600px */
-  gap:1rem;
+  gap:1.5rem;
+  /* neutralise the Bootstrap .row negative gutters so the grid lines up */
+  margin-left:0;
+  margin-right:0;
+}
+/* grid items must be allowed to shrink, otherwise a wide image forces the
+   column wider than its track and the cards overlap */
+#experienceGrid > .experience-card{
+  min-width:0;
+  padding-left:0;
+  padding-right:0;
+}
+/* force the thumbnail (and the placeholder) to a fixed, uniform size */
+#experienceGrid .experience-img{
+  display:block;
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  object-position:center;
+  border-radius:4px;
+  margin-bottom:.75rem;
 }
 @media (min-width:601px){
   #experienceGrid{
-    /* two or more columns above 600px */
-    grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+    /* three columns above 600px (a 3-across grid) */
+    grid-template-columns:repeat(3,minmax(0,1fr));
   }
+}
+
+/* Ensure the contribution form's submit button clears the footer chevron band,
+   which overlaps upward into the bottom of this section. */
+#contribute{
+  padding-bottom:clamp(90px,12vw,150px);
 }
