@@ -303,28 +303,12 @@
   // fall back to images/placeholder.jpg at render time (requirement 4.3).
   const experiences = [
     {
-      id: 'picnic',
-      title: 'Picnic at Botania Relais gardens',
-      description:
-        'A private picnic in the Botanical Gardens in Ischia.',
-      image: 'images/experiences/1-picnic.jpg',
-      price: 140 // placeholder (euros) — update with the real amount
-    },
-    {
       id: 'cooking-nee-noo',
       title: 'An Italian cooking class',
       description:
         'Learn to cook some traditional Ischian dishes before enjoying them for dinner in a warm and familiar setting. (We promise to cook whatever we learn for anyone who gets us this!)',
       image: 'images/experiences/2-cooking.jpg',
       price: 220 // placeholder (euros) — update with the real amount
-    },
-    {
-      id: 'private-dining',
-      title: 'Private dining in an enchanted park',
-      description:
-        'A private dining experience in an enchanted park, catered by a private chef.',
-      image: 'images/experiences/3-dinner-park.jpg',
-      price: 500 // placeholder (euros) — update with the real amount
     },
     {
       id: 'boat-tour-ischia',
@@ -340,7 +324,7 @@
       id: 'boat-tour-capri',
       title: 'An all-day boat trip to Capri',
       description:
-        'A private boat trip to Capri, including three Michelin-star dinners, presumably.',
+        'A private boat trip to Capri',
       image: 'images/experiences/5-capri.jpg',
       price: 1500 // placeholder (euros) — update with the real amount
     },
@@ -359,14 +343,6 @@
         'A visit to Tommasone winery in Ischia for a tour and wine tasting with sea views.',
       image: 'images/experiences/7-wine-tasting.jpeg',
       price: 130 // placeholder (euros) — update with the real amount
-    },
-    {
-      id: 'dinner-1',
-      title: 'Dinner at Umberto a Mare',
-      description:
-        'Dinner at Michelin-starred restaurant Umberto a Mare, on the water\'s edge.',
-      image: 'images/experiences/8-dinner-umberto.jpg',
-      price: 400 // placeholder (euros) — update with the real amount
     },
     {
       id: 'dinner-2',
