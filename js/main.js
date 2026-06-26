@@ -10,29 +10,38 @@
     bootstrap.Offcanvas.getInstance(offcanvasEl) ||
     new bootstrap.Offcanvas(offcanvasEl);
 
-  // Any link inside the mobile menu that points to a hash
-  const menuLinks = offcanvasEl.querySelectorAll('a[href^="#"]');
+  // All links inside the mobile menu.
+  const menuLinks = offcanvasEl.querySelectorAll('a[href]');
 
   menuLinks.forEach((a) => {
     a.addEventListener('click', (e) => {
       const hash = a.getAttribute('href');
-      // Ignore just "#"
+      // Ignore empty / bare "#"
       if (!hash || hash === '#') return;
 
-      const targetEl = document.querySelector(hash);
-      if (!targetEl) return; // let browser handle it if no target
+      // Same-page anchors: close the menu, then smooth-scroll to the section.
+      if (hash.charAt(0) === '#') {
+        const targetEl = document.querySelector(hash);
+        if (!targetEl) return; // let the browser handle it if no target
 
+        e.preventDefault();
+        const doScroll = () => {
+          const y =
+            targetEl.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        };
+
+        offcanvasEl.addEventListener('hidden.bs.offcanvas', doScroll, { once: true });
+        offcanvas.hide();
+        return;
+      }
+
+      // Cross-page links (e.g. gift-registry.html, index.html#section):
+      // Bootstrap's data-bs-dismiss on an <a> calls preventDefault on click,
+      // which otherwise blocks the navigation. Navigate explicitly so the
+      // link works on mobile.
       e.preventDefault();
-
-      // After the offcanvas is fully hidden, do the scroll
-      const doScroll = () => {
-        const y =
-          targetEl.getBoundingClientRect().top + window.pageYOffset - headerOffset;
-        window.scrollTo({ top: y, behavior: 'smooth' });
-      };
-
-      offcanvasEl.addEventListener('hidden.bs.offcanvas', doScroll, { once: true });
-      offcanvas.hide();
+      window.location.href = a.href;
     });
   });
 })();
